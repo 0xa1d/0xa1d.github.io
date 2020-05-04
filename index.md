@@ -25,7 +25,7 @@ If something's wrong or you have suggestions, feel free to reach me.
 
 I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.  
 
-- Basic scan :  
+- Basic scan  
 
 ```
 nmap -sT -sV -sC $HOST -oN nmapinit
@@ -35,7 +35,7 @@ nmap -sT -sV -sC $HOST -oN nmapinit
 -sC : Run default scripts (equivalent to --script=default)  
 -oN : Normal output  
 
-- All ports (fast) :  
+- All ports (fast)  
 
 ```
 nmap -p- --max-retries 0 --min-rate 5000 $HOST -oN nmapfull
@@ -48,7 +48,7 @@ When fast scan detects more ports, I run the first scan again on the newly found
 
 ### 53 - DNS
 
-- Zone transfer :  
+- Zone transfer  
 
 ```
 dig axfr @$HOST $DOMAIN
