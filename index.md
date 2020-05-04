@@ -1,7 +1,7 @@
 # Intro
 
 **Work in progress**  
-Hello, I'm a French cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.  
+Hello, I'm a French junior cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.  
 You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)  
 If something's wrong or you have suggestions, feel free to reach me.  
 
@@ -55,9 +55,9 @@ or
 host -l $DOMAIN $HOST
 ```
 
-### 80 & 443  - Web (HTTP/HTTPS)
+### 80 & 443 - Web (HTTP/HTTPS)
 
-**Gobuster**
+**Gobuster**  
 
 I always use gobuster for web enumeration, with at least 2 wordlists :  
 ```
@@ -77,24 +77,57 @@ More useful options :
 `-s 200` to restrict by HTTP status (default is 200,204,301,302,307,401,403)  
 
 **SSLyze**  
-For example to check is target is vulnerable to heartbleed :  
+Check if target is vulnerable to heartbleed :  
 ```
 sslyze --heartbleed $HOST
 ```
 
-**Nikto**
+**Nikto**  
 Check for common vulnerabilities or misconfigurations :  
 ```
 nikto -host http://$HOST
 ```
 
-**sqlmap**
+**sqlmap**  
 Check for SQL injections :  
 ```
 sqlmap -u "http://$HOST/index.php?page=1"
 ```
 
+### 88 & 464 - Kerberos
 
+**AS-REP roasting with Impacket - GetNPUsers.py**  
+Get TGTs of users who have "do not require Kerberos preauthentication" set :  
+```
+python GetNPUsers.py $DOMAIN/ -dc-ip $HOST -request
+```
+
+For a specific user :  
+```
+# no creds
+python GetNPUsers.py $DOMAIN/$USER -dc-ip $HOST -no-pass
+# with creds
+python GetNPUsers.py $DOMAIN/$USER:$PWD -dc-ip $HOST
+```
+
+**Kerbrute**  
+User enumeration :  
+```
+kerbrute userenum --dc $HOST -d $DOMAIN $WORDLIST
+```
+Example : `kerbrute userenum --dc 10.10.10.10 -d domain.local /opt/SecLists/Usernames/xato-net-10-million-usernames-dup.txt`  
+
+Bruteforce user :  
+```
+kerbrute bruteuser --dc $HOST -d $DOMAIN $WORDLIST $USER
+```
+Example : `kerbrute bruteuser --dc 10.10.10.10 -d domain.local /usr/share/wordlists/rockyou.txt alice`  
+
+Password spray :  
+```
+kerbrute passwordspray --dc $HOST -d $DOMAIN $FILE_USERS $PASSWORD
+```
+Example : `kerbrute passwordspray --dc 10.10.10.10 -d domain.local domain_users.txt Password123!`  
 
 
 ## Vulnerabilities
@@ -104,32 +137,3 @@ sqlmap -u "http://$HOST/index.php?page=1"
 ## Payloads
 
 ## Privesc
-
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/0xa1d/0xa1d.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
