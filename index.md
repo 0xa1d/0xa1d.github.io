@@ -279,7 +279,18 @@ Pass-The-Hash :
 crackmapexec smb $HOST -u $USER -H $HASH
 ```
 
+- enum4linux
 
+Not actively maintained but still useful :
+```
+enum4linux $HOST
+```
+
+### 389(636) & 3268(3269) - LDAP
+
+- ldapsearch  
+
+**todo**
 
 
 
