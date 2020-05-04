@@ -1,9 +1,9 @@
 # Intro
 
-**Work in progress**<br/>
-Hello, I'm a French cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.<br/>
-You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)<br/>
-If something's wrong or you have suggestions, feel free to reach me.<br/>
+**Work in progress**  
+Hello, I'm a French cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.  
+You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)  
+If something's wrong or you have suggestions, feel free to reach me.  
 
 # Index
 
@@ -23,20 +23,22 @@ If something's wrong or you have suggestions, feel free to reach me.<br/>
 
 ### Ports & services
 
-I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.<br/>
+I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.  
 
 Basic scan :
-`nmap -sT -sV -sC $HOST -oN nmapinit`<br/>
--sT : TCP connect scan (as opposed to -sS which is SYN scan)<br/>
--sV : Version detection<br/>
--sC : Run default scripts (equivalent to --script=default)<br/>
--oN : Normal output<br/>
+`nmap -sT -sV -sC $HOST -oN nmapinit`  
+-sT : TCP connect scan (as opposed to -sS which is SYN scan)  
+-sV : Version detection  
+-sC : Run default scripts (equivalent to --script=default)  
+-oN : Normal output  
 
 All ports (fast) :
-`nmap -p- --max-retries 0 --min-rate 5000 $HOST -oN nmapfull`<br/>
--p- : All ports<br/>
---max-retries : Cap number of retransmission (default is 10)<br/>
---min-rate : Packets per second to send<br/>
+`nmap -p- --max-retries 0 --min-rate 5000 $HOST -oN nmapfull`  
+-p- : All ports  
+--max-retries : Cap number of retransmission (default is 10)  
+--min-rate : Packets per second to send  
+
+When fast scan detects more ports, I run the first scan again on the new found ports (for example `-p 45678,45679`)  
 
 ## Vulnerabilities
 
