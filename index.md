@@ -26,10 +26,10 @@ If something's wrong or you have suggestions, feel free to reach me.
 Basic scan :
 
 `nmap -sT -sV -sC $HOST -oN nmapinit`
-- -sT : TCP connect scan (as opposed to -sS which is SYN scan)
-- -sV : Version detection
-- -sC : Run default scripts (equivalent to --script=default)
-- -oN : Normal output
+-sT : TCP connect scan (as opposed to -sS which is SYN scan)
+-sV : Version detection
+-sC : Run default scripts (equivalent to --script=default)
+-oN : Normal output
 
 ## Vulnerabilities
 
