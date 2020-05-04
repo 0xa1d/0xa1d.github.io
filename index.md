@@ -46,18 +46,30 @@ When fast scan detects more ports, I run the first scan again on the newly found
 
 ### 53 - DNS
 
+Zone transfer :  
 ```
-nslookup  
-> SERVER $HOST  
-> 127.0.0.1
+dig axfr @$HOST $DOMAIN
+```
+or  
+```
+host -l $DOMAIN $HOST
 ```
 
-Zone transfer :  
-`dig axfr @$HOST $DOMAIN`  
-Example : `dig axfr @10.10.10.10 domain.local`  
-or  
-`host -l $DOMAIN $HOST`  
-Example : `host -l domain.local 10.10.10.10`  
+### 80 & 443  - Web (HTTP/HTTPS)
+
+I always use gobuster for web enumeration, with at least 2 wordlists :  
+```
+gobuster dir -u http://$TARGET -w /usr/share/wordlists/dirb/common.txt
+```
+and  
+```
+gobuster dir -u http://$TARGET -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+```
+Depending on the situation, add `-x` option with file extensions.  
+For example if server is Windows IIS you'll probably want to add `-x asp,aspx` or if server is Linux running Apache `-x html,php`.  
+You may also want to find forgotten files with `-x txt,bak,old,xml`.  
+
+
 
 ## Vulnerabilities
 
