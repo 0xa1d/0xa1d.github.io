@@ -259,9 +259,6 @@ crackmapexec smb $HOST -u $USER -p $PWD --sessions
 crackmapexec smb $HOST -u $USER -p $PWD --disks
 
 # logged-on users :
-crackmapexec smb $HOST -u $USER -p $PWD --disks
-
-# disks :
 crackmapexec smb $HOST -u $USER -p $PWD --loggedon-users
 
 # domain users :
