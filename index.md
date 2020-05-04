@@ -1,14 +1,18 @@
-## Welcome to GitHub Pages
+# Intro
 
-You can use the [editor on GitHub](https://github.com/0xa1d/0xa1d.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Hello, I'm a French cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.
+You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)
+If something's wrong or you have suggestions, feel free to reach me.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Index
 
-[link to test](https://0xa1d.github.io/test)
+- [Enumeration](#enumeration)
+- 
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# Content
+## Enumeration
+## 
 
 ```markdown
 Syntax highlighted code block
