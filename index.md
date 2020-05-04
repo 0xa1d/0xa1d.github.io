@@ -1,9 +1,9 @@
 # Intro
 
-**Work in progress**</br>
-Hello, I'm a French cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.</br>
-You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)</br>
-If something's wrong or you have suggestions, feel free to reach me.</br>
+**Work in progress**<br/>
+Hello, I'm a French cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.<br/>
+You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)<br/>
+If something's wrong or you have suggestions, feel free to reach me.<br/>
 
 # Index
 
@@ -23,17 +23,20 @@ If something's wrong or you have suggestions, feel free to reach me.</br>
 
 ### Ports & services
 
-I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.</br>
+I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.<br/>
 
 Basic scan :
-`nmap -sT -sV -sC $HOST -oN nmapinit`</br>
--sT : TCP connect scan (as opposed to -sS which is SYN scan)</br>
--sV : Version detection</br>
--sC : Run default scripts (equivalent to --script=default)</br>
--oN : Normal output</br>
+`nmap -sT -sV -sC $HOST -oN nmapinit`<br/>
+-sT : TCP connect scan (as opposed to -sS which is SYN scan)<br/>
+-sV : Version detection<br/>
+-sC : Run default scripts (equivalent to --script=default)<br/>
+-oN : Normal output<br/>
 
 All ports (fast) :
-`nmap -p- 
+`nmap -p- --max-retries 0 --min-rate 5000 $HOST -oN nmapfull`<br/>
+-p- : All ports<br/>
+--max-retries : Cap number of retransmission (default is 10)<br/>
+--min-rate : Packets per second to send<br/>
 
 ## Vulnerabilities
 
