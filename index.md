@@ -209,6 +209,7 @@ Example :
 ### 139 & 445 - SMB
 
 - smbclient  
+
 List shares :  
 ```
 smbclient -L //$HOST -U $USER
@@ -227,6 +228,7 @@ smb: \> mget directory
 ```
 
 - smbmap  
+
 Enum smb share :  
 ```
 # no creds
@@ -239,6 +241,7 @@ Example :
 `smbmap -H 10.10.10.10 -d domain.local -u bob -p 'Password123!'`
 
 - crackmapexec  
+
 Null session :  
 ```
 crackmapexec smb $HOST -u '' -p ''
