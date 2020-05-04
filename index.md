@@ -57,6 +57,8 @@ host -l $DOMAIN $HOST
 
 ### 80 & 443  - Web (HTTP/HTTPS)
 
+**Gobuster**
+
 I always use gobuster for web enumeration, with at least 2 wordlists :  
 ```
 gobuster dir -u http://$TARGET -w /usr/share/wordlists/dirb/common.txt
@@ -68,6 +70,30 @@ gobuster dir -u http://$TARGET -w /usr/share/wordlists/dirbuster/directory-list-
 Depending on the situation, add `-x` option with file extensions.  
 For example if server is Windows IIS you'll probably want to add `-x asp,aspx` or if server is Linux running Apache `-x html,php`.  
 You may also want to find forgotten files with `-x txt,bak,old,xml`.  
+
+More useful options :  
+`--insecuressl` to ignore ssl check  
+`-t 20` number of threads  
+`-s 200` to restrict by HTTP status (default is 200,204,301,302,307,401,403)  
+
+**SSLyze**  
+For example to check is target is vulnerable to heartbleed :  
+```
+sslyze --heartbleed $HOST
+```
+
+**Nikto**
+Check for common vulnerabilities or misconfigurations :  
+```
+nikto -host http://$HOST
+```
+
+**sqlmap**
+Check for SQL injections :  
+```
+sqlmap -u "http://$HOST/index.php?page=1"
+```
+
 
 
 
