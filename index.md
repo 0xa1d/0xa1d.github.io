@@ -77,18 +77,21 @@ More useful options :
 `-s 200` to restrict by HTTP status (default is 200,204,301,302,307,401,403)  
 
 - SSLyze  
+
 Check if target is vulnerable to heartbleed :  
 ```
 sslyze --heartbleed $HOST
 ```
 
 - Nikto  
+
 Check for common vulnerabilities or misconfigurations :  
 ```
 nikto -host http://$HOST
 ```
 
 - sqlmap  
+
 Check for SQL injections :  
 ```
 sqlmap -u "http://$HOST/index.php?page=1"
