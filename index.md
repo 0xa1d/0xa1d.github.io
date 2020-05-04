@@ -42,9 +42,11 @@ When fast scan detects more ports, I run the first scan again on the newly found
 
 ### 53 - DNS
 
-`nslookup  
+```
+nslookup  
 > SERVER $HOST  
-> 127.0.0.1`  
+> 127.0.0.1
+```
 
 Zone transfer :  
 `dig axfr @$HOST $DOMAIN`  
