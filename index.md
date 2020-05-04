@@ -113,6 +113,7 @@ For a specific user :
 ```
 # no creds
 python GetNPUsers.py $DOMAIN/$USER -dc-ip $HOST -no-pass
+
 # with creds
 python GetNPUsers.py $DOMAIN/$USER:$PWD -dc-ip $HOST
 ```
@@ -139,6 +140,144 @@ kerbrute passwordspray --dc $HOST -d $DOMAIN $FILE_USERS $PASSWORD
 ```
 Example :  
 `kerbrute passwordspray --dc 10.10.10.10 -d domain.local domain_users.txt Password123!`  
+
+### 111 & 135 - RPC
+
+- rpcclient  
+
+Connect with null session :  
+```
+rpcclient -U "" $HOST
+```
+
+Enum users and give RIDs :  
+```
+rpcclient> enumdomusers
+```
+
+Enum privileges :  
+```
+rpcclient> enumprivs
+```
+
+Query user with RID :  
+```
+rpcclient> queryuser $RID
+```
+
+Query user's groups with RID :  
+```
+rpcclient> queryusergroups $RID
+```
+
+Query group with RID :  
+```
+rpcclient> querygroup $RID
+```
+
+- RPCScan  
+
+List RPC services :  
+```
+python3 rpc-scan.py $HOST --rpc
+```
+
+List mountpoints :  
+```
+python3 rpc-scan.py $HOST --mounts
+```
+
+List NFS shares :  
+```
+python3 rpc-scan.py $HOST --nfs --recurse 3
+```
+
+List on NFS share :
+```
+python3 nfs-ls.py nfs://$HOST/$PATH
+```
+Example :  
+`python3 nfs-ls.py nfs://10.10.10.10/example_dir`  
+
+Get file on NFS share :
+```
+python3 nfs-get.py nfs://$HOST/$PATH -d $OUT
+```
+Example :  
+`python3 nfs-get.py nfs://10.10.10.10/example_dir/example_file.txt -d example_file.txt`  
+
+### 139 & 445 - SMB
+
+- smbclient  
+List shares :  
+```
+smbclient -L //$HOST -U $USER
+```
+
+Connect :  
+```
+smbclient //$HOST -U $USER
+```
+
+Download dir recursively :
+```
+smb: \> prompt
+smb: \> recurse
+smb: \> mget directory
+```
+
+- smbmap  
+Enum smb share :  
+```
+# no creds
+smbmap -H $HOST
+
+# with creds
+smbmap -H $HOST -d $DOMAIN -u $USER -p $PWD
+```
+Example :  
+`smbmap -H 10.10.10.10 -d domain.local -u bob -p 'Password123!'`
+
+- crackmapexec  
+Null session :  
+```
+crackmapexec smb $HOST -u '' -p ''
+```
+
+Enum :  
+```
+# shares :
+crackmapexec smb $HOST -u $USER -p $PWD --shares
+
+# sessions :
+crackmapexec smb $HOST -u $USER -p $PWD --sessions
+
+# disks :
+crackmapexec smb $HOST -u $USER -p $PWD --disks
+
+# logged-on users :
+crackmapexec smb $HOST -u $USER -p $PWD --disks
+
+# disks :
+crackmapexec smb $HOST -u $USER -p $PWD --loggedon-users
+
+# domain users :
+crackmapexec smb $HOST -u $USER -p $PWD --users
+
+# domain groups :
+crackmapexec smb $HOST -u $USER -p $PWD --groups
+
+password policy :
+crackmapexec smb $HOST -u $USER -p $PWD --pass-pol
+```
+
+Pass-The-Hash :  
+```
+crackmapexec smb $HOST -u $USER -H $HASH
+```
+
+
+
 
 
 ## Vulnerabilities
