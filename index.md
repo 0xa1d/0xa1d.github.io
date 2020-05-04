@@ -1,6 +1,6 @@
 # Intro
 
-**Work in progress**
+**Work in progress**  
 Hello, I'm a French cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.  
 You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)  
 If something's wrong or you have suggestions, feel free to reach me.
@@ -25,11 +25,11 @@ If something's wrong or you have suggestions, feel free to reach me.
 
 Basic scan :
 
-`nmap -sT -sV -sC $HOST -oN nmapinit`
--sT : TCP connect scan (as opposed to -sS which is SYN scan)
--sV : Version detection
--sC : Run default scripts (equivalent to --script=default)
--oN : Normal output
+`nmap -sT -sV -sC $HOST -oN nmapinit`  
+-sT : TCP connect scan (as opposed to -sS which is SYN scan)  
+-sV : Version detection  
+-sC : Run default scripts (equivalent to --script=default)  
+-oN : Normal output  
 
 ## Vulnerabilities
 
