@@ -26,6 +26,7 @@ If something's wrong or you have suggestions, feel free to reach me.
 I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.  
 
 - Basic scan :  
+
 ```
 nmap -sT -sV -sC $HOST -oN nmapinit
 ```
@@ -35,6 +36,7 @@ nmap -sT -sV -sC $HOST -oN nmapinit
 -oN : Normal output  
 
 - All ports (fast) :  
+
 ```
 nmap -p- --max-retries 0 --min-rate 5000 $HOST -oN nmapfull
 ```
@@ -47,6 +49,7 @@ When fast scan detects more ports, I run the first scan again on the newly found
 ### 53 - DNS
 
 - Zone transfer :  
+
 ```
 dig axfr @$HOST $DOMAIN
 ```
@@ -100,6 +103,7 @@ sqlmap -u "http://$HOST/index.php?page=1"
 ### 88 & 464 - Kerberos
 
 - AS-REP roasting with Impacket - GetNPUsers.py  
+
 Get TGTs of users who have "do not require Kerberos preauthentication" set :  
 ```
 python GetNPUsers.py $DOMAIN/ -dc-ip $HOST -request
@@ -114,6 +118,7 @@ python GetNPUsers.py $DOMAIN/$USER:$PWD -dc-ip $HOST
 ```
 
 - Kerbrute  
+
 **User enumeration :**  
 ```
 kerbrute userenum --dc $HOST -d $DOMAIN $WORDLIST
