@@ -25,20 +25,20 @@ If something's wrong or you have suggestions, feel free to reach me.
 
 I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.  
 
-Basic scan :  
+**Basic scan :**  
 `nmap -sT -sV -sC $HOST -oN nmapinit`  
 -sT : TCP connect scan (as opposed to -sS which is SYN scan)  
 -sV : Version detection  
 -sC : Run default scripts (equivalent to --script=default)  
 -oN : Normal output  
 
-All ports (fast) :  
+**All ports (fast) :**  
 `nmap -p- --max-retries 0 --min-rate 5000 $HOST -oN nmapfull`  
 -p- : All ports  
 --max-retries : Cap number of retransmission (default is 10)  
 --min-rate : Packets per second to send  
 
-When fast scan detects more ports, I run the first scan again on the new found ports (for example `-p 45678,45679`)  
+When fast scan detects more ports, I run the first scan again on the newly found ports (for example `-p 45678,45679`)  
 
 ## Vulnerabilities
 
