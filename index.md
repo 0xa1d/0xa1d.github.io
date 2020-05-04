@@ -40,6 +40,19 @@ I always run the following 2 scans to begin with. Heard about UDP scans but I ha
 
 When fast scan detects more ports, I run the first scan again on the newly found ports (for example `-p 45678,45679`)  
 
+### 53 - DNS
+
+`nslookup  
+> SERVER $HOST  
+> 127.0.0.1`  
+
+Zone transfer :  
+`dig axfr @$HOST $DOMAIN`  
+Example : `dig axfr @10.10.10.10 domain.local`  
+or  
+`host -l $DOMAIN $HOST`  
+Example : `host -l domain.local 10.10.10.10`  
+
 ## Vulnerabilities
 
 ## Bruteforce
