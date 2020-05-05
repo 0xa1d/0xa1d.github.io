@@ -1,12 +1,13 @@
 ## Intro
 
 **Work in progress**  
+
 Hello, I'm a French junior cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.  
 You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)  
 If something's wrong or you have suggestions, feel free to reach me.  
 
 ## Cheatsheets
-The categories are subject to change, I'm still trying to figure out how to better organize
+The categories are subject to change, I'm still trying to figure out how to better organize.
 - [Enumeration](https://0xa1d.github.io/cheatsheet#enumeration)
 - [Vulnerabilities](https://0xa1d.github.io/cheatsheet#vulnerabilities)
 - [Bruteforce](https://0xa1d.github.io/cheatsheet#bruteforce)
@@ -14,5 +15,5 @@ The categories are subject to change, I'm still trying to figure out how to bett
 - [Privesc](https://0xa1d.github.io/cheatsheet#privesc)
 
 ## Write-ups
-These will be my write-ups for (obviously retired) HackTheBox machines, done when they were still active
+These will be my write-ups for (obviously retired) HackTheBox machines, done when they were still active.
 - [[HTB][Easy] OpenAdmin](https://0xa1d.github.io/openadmin)
