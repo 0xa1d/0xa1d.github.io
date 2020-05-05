@@ -5,14 +5,14 @@ Hello, I'm a French junior cybersecurity professional studying for OSCP for the 
 You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)  
 If something's wrong or you have suggestions, feel free to reach me.  
 
-## Index
-
-### Cheatsheet
+## Cheatsheets
+The categories are subject to change, I'm still trying to figure out how to better organize
 - [Enumeration](https://0xa1d.github.io/cheatsheet#enumeration)
 - [Vulnerabilities](https://0xa1d.github.io/cheatsheet#vulnerabilities)
 - [Bruteforce](https://0xa1d.github.io/cheatsheet#bruteforce)
 - [Payloads](https://0xa1d.github.io/cheatsheet#payloads)
 - [Privesc](https://0xa1d.github.io/cheatsheet#privesc)
 
-### Write-ups
-- [HTB - OpenAdmin](https://0xa1d.github.io/openadmin)
+## Write-ups
+These will be my write-ups for (obviously retired) HackTheBox machines, done when they were still active
+- [[HTB][Easy] OpenAdmin](https://0xa1d.github.io/openadmin)
