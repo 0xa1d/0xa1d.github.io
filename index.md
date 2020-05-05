@@ -13,6 +13,7 @@ The categories are subject to change, I'm still trying to figure out how to bett
 - [Bruteforce](https://0xa1d.github.io/cheatsheet#bruteforce)
 - [Payloads](https://0xa1d.github.io/cheatsheet#payloads)
 - [Privesc](https://0xa1d.github.io/cheatsheet#privesc)
+- [Misc](https://0xa1d.github.io/cheatsheet#misc)
 
 ## Write-ups
 These will be my write-ups for (obviously retired) HackTheBox machines, done when they were still active.
