@@ -81,13 +81,6 @@ Check for common vulnerabilities or misconfigurations :
 nikto -host http://$HOST
 ```
 
-- sqlmap  
-
-Check for SQL injections :  
-```
-sqlmap -u "http://$HOST/index.php?page=1"
-```
-
 ### 88 & 464 - Kerberos
 
 - AS-REP roasting with Impacket - GetNPUsers.py  
