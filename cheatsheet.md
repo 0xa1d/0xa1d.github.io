@@ -72,6 +72,7 @@ More useful options :
 `-s 200` to restrict by HTTP status (default is 200,204,301,302,307,401,403)  
 
 - wfuzz  
+
 ```
 wfuzz -u http://$HOST/page.php?param=FUZZ -w $WORDLIST
 ```
