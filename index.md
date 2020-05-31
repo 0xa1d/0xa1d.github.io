@@ -14,7 +14,3 @@ The categories are subject to change, I'm still trying to figure out how to bett
 - [Payloads](https://0xa1d.github.io/cheatsheet#payloads)
 - [Privesc](https://0xa1d.github.io/cheatsheet#privesc)
 - [Misc](https://0xa1d.github.io/cheatsheet#misc)
-
-## Write-ups
-These will be my write-ups for (obviously retired) HackTheBox machines, done when they were still active.
-- [[HTB][Easy] OpenAdmin](https://0xa1d.github.io/openadmin)
