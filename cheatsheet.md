@@ -67,6 +67,16 @@ More useful options :
 `-t 20` number of threads  
 `-s 200` to restrict by HTTP status (default is 200,204,301,302,307,401,403)  
 
+- wfuzz
+```
+wfuzz -u http://$HOST/page.php?param=FUZZ -w $WORDLIST
+```
+Example :  
+`wfuzz -u http://10.10.10.10/page.php?param=FUZZ -w /opt/seclists/Fuzzing/special-chars.txt`  
+
+Useful options :
+--hc : Ignore given HTTP status code  
+
 - SSLyze  
 
 Check if target is vulnerable to heartbleed :  
@@ -144,7 +154,7 @@ Read mail :
 ```
 RETR X
 ```
-Replace `X` with the number obtained with `LIST`.  
+Replace `X` with the number(s) returned by `LIST`.  
 
 ### 111 & 135 - RPC
 
