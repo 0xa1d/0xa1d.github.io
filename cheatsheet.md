@@ -122,6 +122,30 @@ kerbrute passwordspray --dc $HOST -d $DOMAIN $FILE_USERS $PASSWORD
 Example :  
 `kerbrute passwordspray --dc 10.10.10.10 -d domain.local domain_users.txt Password123!`  
 
+### 110 - POP3
+
+Connection :  
+```
+telnet $IP 110
+```
+
+Login :  
+```
+USER $USER
+PASS $PASS
+```
+
+Check mails :  
+```
+LIST
+```
+
+Read mail :
+```
+RETR X
+```
+Replace `X` with the number obtained with `LIST`.  
+
 ### 111 & 135 - RPC
 
 - rpcclient  
