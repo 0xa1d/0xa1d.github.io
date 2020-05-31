@@ -5,6 +5,7 @@
 - [Bruteforce](#bruteforce)
 - [Payloads](#payloads)
 - [Privesc](#privesc)
+- [Get shells](#get-shells)
 - [Misc](#misc)
 
 ## Enumeration
