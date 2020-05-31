@@ -483,7 +483,7 @@ Tools can help to find the way to privesc, but they shouldn't substitute manual 
 
 - Windows  
 
-[evil-winrm](https://github.com/Hackplayers/evil-winrm)
+[evil-winrm](https://github.com/Hackplayers/evil-winrm)  
 [winPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)  
 [BloodHound](https://github.com/BloodHoundAD/BloodHound)  
 with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)  
@@ -497,7 +497,7 @@ and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc
 - Others  
 
 [Impacket](https://github.com/SecureAuthCorp/impacket)  
-with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump
+with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
 [SecLists](https://github.com/danielmiessler/SecLists)  
 [Nishang](https://github.com/samratashok/nishang)  
 
