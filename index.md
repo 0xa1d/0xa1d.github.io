@@ -15,3 +15,4 @@ The categories are subject to change, I'm still trying to figure out how to bett
 - [Privesc](https://0xa1d.github.io/cheatsheet#privesc)
 - [Get shells](https://0xa1d.github.io/cheatsheet#get-shells)
 - [Misc](https://0xa1d.github.io/cheatsheet#misc)
+- [Active Directory](https://0xa1d.github.io/cheatsheet#active-directory)
