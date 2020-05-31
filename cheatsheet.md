@@ -67,7 +67,7 @@ More useful options :
 `-t 20` number of threads  
 `-s 200` to restrict by HTTP status (default is 200,204,301,302,307,401,403)  
 
-- wfuzz
+- wfuzz  
 ```
 wfuzz -u http://$HOST/page.php?param=FUZZ -w $WORDLIST
 ```
@@ -474,9 +474,11 @@ Tools can help to find the way to privesc, but they shouldn't substitute manual 
 [pspy](https://github.com/DominicBreuker/pspy)  
 [LinEnum](https://github.com/rebootuser/LinEnum)  
 [LinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)  
+[SUID3NUM](https://github.com/Anon-Exploiter/SUID3NUM)  
 
 - Windows  
 
+[evil-winrm](https://github.com/Hackplayers/evil-winrm)
 [winPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)  
 [BloodHound](https://github.com/BloodHoundAD/BloodHound)  
 with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)  
@@ -485,6 +487,20 @@ with [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Reco
 and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
 [SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
+[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  
+
+- Others  
+
+[Impacket](https://github.com/SecureAuthCorp/impacket)  
+[SecLists](https://github.com/danielmiessler/SecLists)  
+[Nishang](https://github.com/samratashok/nishang)  
+
+- Steganography
+
+exiftool  
+steghide  
+foremost  
+binwalk  
 
 ### Manual enum
 
