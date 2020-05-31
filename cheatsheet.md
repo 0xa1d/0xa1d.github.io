@@ -9,6 +9,7 @@
 - [Privesc](#privesc)
 - [Get shells](#get-shells)
 - [Misc](#misc)
+- [Active Directory](#active-directory)
 
 ## Enumeration
 
@@ -764,3 +765,6 @@ And then copy `id_rsa.pub` in `/home/$USER/.ssh/authorized_keys` of remote host.
 ```
 ssh $USER@$REMOTE_HOST
 ```
+
+## Active Directory
+
