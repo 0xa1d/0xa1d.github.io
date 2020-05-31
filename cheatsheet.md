@@ -752,7 +752,7 @@ export TERM=screen
 
 ### Export SSH keys
 
-Gen new key pair :  
+Generate new key pair :  
 ```
 ssh-keygen -t rsa
 ```
