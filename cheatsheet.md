@@ -24,7 +24,7 @@ nmap -sT -sV -sC $HOST -oN nmapinit
 ```
 -sT : TCP connect scan, as opposed to -sS which is SYN scan. -sT is less prone to trigger IDS or some sort of defenses, since it behaves more like a "normal" connection (like browsers would do for example), whereas -sS never terminates TCP connections. The counterpart is that it is a bit slower  
 -sV : Version detection  
--sC : Run default scripts (equivalent to --script=default)  
+-sC : Run default scripts (equivalent to \--script=default)  
 -oN : Normal output  
 
 - All ports (fast)  
