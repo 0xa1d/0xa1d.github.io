@@ -1,6 +1,6 @@
 ## Intro
 
-Hello, I'm a French junior cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.  
+Hello and welcome, I'm a French junior cybersecurity professional studying for OSCP for the past few months. I am mostly training on HackTheBox and taking notes on CherryTree but wanted to make all of this prettier.  
 You'll find plenty of cheatsheets regarding OSCP on the web, this one is far from exhaustive nor finished, but it's mine and I'm planning to update it as long as I'm not done with the certification ! Bonus if it helps someone :)  
 If something's wrong or you have suggestions, feel free to reach me.  
 
@@ -14,3 +14,7 @@ The categories are subject to change, I'm still trying to figure out how to bett
 - [Get shells](https://0xa1d.github.io/cheatsheet#get-shells)
 - [Active Directory](https://0xa1d.github.io/cheatsheet#active-directory)
 - [Misc](https://0xa1d.github.io/cheatsheet#misc)
+
+## Progress
+I have done 41 boxes including 9 actives as of May, 26.  
+There are 15 boxes left on my to-do list of retired machines. I'm also planning to get Pro Hacker rank before taking the course (Hacker atm).
