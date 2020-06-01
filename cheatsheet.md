@@ -483,7 +483,6 @@ Tools can help to find the way to privesc, but they shouldn't substitute manual 
 
 - Windows  
 
-[evil-winrm](https://github.com/Hackplayers/evil-winrm)  
 [winPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)  
 [BloodHound](https://github.com/BloodHoundAD/BloodHound)  
 with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)  
@@ -492,21 +491,6 @@ with [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Reco
 and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
 [SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
-[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  
-
-- Others  
-
-[Impacket](https://github.com/SecureAuthCorp/impacket)  
-with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
-[SecLists](https://github.com/danielmiessler/SecLists)  
-[Nishang](https://github.com/samratashok/nishang)  
-
-- Steganography
-
-exiftool  
-steghide  
-foremost  
-binwalk  
 
 ### Manual enum
 
@@ -785,3 +769,19 @@ Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccount
 ```
 Example :  
 `Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccountName banana -Rights DCSync`  
+
+## Other tools  
+
+[evil-winrm](https://github.com/Hackplayers/evil-winrm)  
+[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  
+[Impacket](https://github.com/SecureAuthCorp/impacket)  
+with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
+[SecLists](https://github.com/danielmiessler/SecLists)  
+[Nishang](https://github.com/samratashok/nishang)  
+
+### Steganography
+
+exiftool  
+steghide  
+foremost  
+binwalk  
