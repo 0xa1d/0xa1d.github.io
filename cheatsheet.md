@@ -80,7 +80,7 @@ Example :
 `wfuzz -u http://10.10.10.10/page.php?param=FUZZ -w /opt/seclists/Fuzzing/special-chars.txt`  
 
 Useful options :
---hc : Ignore given HTTP status code  
+\--hc : Ignore given HTTP status code  
 
 - SSLyze  
 
