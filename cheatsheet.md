@@ -8,9 +8,8 @@
 - [Payloads](#payloads)
 - [Privesc](#privesc)
 - [Get shells](#get-shells)
-- [Misc](#misc)
 - [Active Directory](#active-directory)
-- [Other tools](#other-tools)
+- [Misc](#misc)
 
 ## Enumeration
 
@@ -730,6 +729,20 @@ And then execute `ping -c 1 $KALI_IP` on remote host.
 mount -t nfs $HOST:/remote/path /local/path
 ```
 
+### Other tools  
+
+[evil-winrm](https://github.com/Hackplayers/evil-winrm)  
+[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  
+[Impacket](https://github.com/SecureAuthCorp/impacket) with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
+[SecLists](https://github.com/danielmiessler/SecLists)  
+[Nishang](https://github.com/samratashok/nishang)  
+
+- Steganography  
+exiftool  
+steghide  
+foremost  
+binwalk  
+
 ### Improve shell
 
 ```
@@ -770,18 +783,3 @@ Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccount
 ```
 Example :  
 `Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccountName banana -Rights DCSync`  
-
-## Other tools  
-
-[evil-winrm](https://github.com/Hackplayers/evil-winrm)  
-[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  
-[Impacket](https://github.com/SecureAuthCorp/impacket) with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
-[SecLists](https://github.com/danielmiessler/SecLists)  
-[Nishang](https://github.com/samratashok/nishang)  
-
-### Steganography
-
-exiftool  
-steghide  
-foremost  
-binwalk  
