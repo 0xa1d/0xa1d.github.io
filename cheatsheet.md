@@ -10,6 +10,7 @@
 - [Get shells](#get-shells)
 - [Misc](#misc)
 - [Active Directory](#active-directory)
+- [Other tools](#other-tools)
 
 ## Enumeration
 
@@ -774,8 +775,7 @@ Example :
 
 [evil-winrm](https://github.com/Hackplayers/evil-winrm)  
 [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)  
-[Impacket](https://github.com/SecureAuthCorp/impacket)  
-with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
+[Impacket](https://github.com/SecureAuthCorp/impacket) with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
 [SecLists](https://github.com/danielmiessler/SecLists)  
 [Nishang](https://github.com/samratashok/nishang)  
 
