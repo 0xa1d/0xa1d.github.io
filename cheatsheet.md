@@ -698,7 +698,7 @@ Useful options :
 -X : request command  
 -H : header  
 -d : data, specify @file.txt to upload file  
---insecure : ignore certificate validity  
+\--insecure : ignore certificate validity  
 -v : verbose  
 
 - awk  
