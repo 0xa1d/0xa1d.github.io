@@ -79,7 +79,7 @@ wfuzz -u http://$HOST/page.php?param=FUZZ -w $WORDLIST
 Example :  
 `wfuzz -u http://10.10.10.10/page.php?param=FUZZ -w /opt/seclists/Fuzzing/special-chars.txt`  
 
-Useful options :
+Useful options :  
 \--hc : Ignore given HTTP status code  
 
 - SSLyze  
