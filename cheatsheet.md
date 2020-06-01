@@ -757,6 +757,7 @@ mount -t nfs $HOST:/remote/path /local/path
 [Nishang](https://github.com/samratashok/nishang)  
 
 - Steganography  
+
 exiftool  
 steghide  
 foremost  
