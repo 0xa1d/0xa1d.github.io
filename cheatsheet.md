@@ -244,7 +244,7 @@ Download dir recursively :
 ```
 smb: \> prompt
 smb: \> recurse
-smb: \> mget directory
+smb: \> mget $DIR
 ```
 
 - smbmap  
