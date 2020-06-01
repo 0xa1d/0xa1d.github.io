@@ -287,7 +287,7 @@ crackmapexec smb $HOST -u $USER -p $PWD --users
 # domain groups :
 crackmapexec smb $HOST -u $USER -p $PWD --groups
 
-password policy :
+# password policy :
 crackmapexec smb $HOST -u $USER -p $PWD --pass-pol
 ```
 
