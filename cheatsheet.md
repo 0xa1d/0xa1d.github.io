@@ -783,8 +783,8 @@ export TERM=screen
 
 ### Export SSH keys
 
-When you own user (but not its password) and still want ssh session, just follow this.  
-Generate new key pair :  
+Handy if you own user and want ssh session but don't have its password.
+Generate new key pair (on Kali) :  
 ```
 ssh-keygen -t rsa
 ```
