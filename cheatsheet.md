@@ -783,6 +783,7 @@ export TERM=screen
 
 ### Export SSH keys
 
+When you own user (but not its password) and still want ssh session, just follow this.  
 Generate new key pair :  
 ```
 ssh-keygen -t rsa
