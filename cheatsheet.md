@@ -776,6 +776,7 @@ S : 8-bit byte char
 [Impacket](https://github.com/SecureAuthCorp/impacket) with GetUserSPNs, psexec, smbserver, GetNPUsers, secretsdump  
 [SecLists](https://github.com/danielmiessler/SecLists)  
 [Nishang](https://github.com/samratashok/nishang)  
+[Ghidra](https://ghidra-sre.org/)  
 
 - Steganography  
 
