@@ -790,7 +790,7 @@ binwalk
 ```
 python3 -c "import pty;pty.spawn('/bin/bash')"
 ctrl Z
-stty raw echo
+stty raw -echo
 fg
 export TERM=screen
 ```
