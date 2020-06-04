@@ -756,6 +756,19 @@ And then execute `ping -c 1 $KALI_IP` on remote host.
 mount -t nfs $HOST:/remote/path /local/path
 ```
 
+- strings  
+
+Useful for checking strings in binaries. Try different encodings with `-e` which may output different results :
+```
+strings -e {l,L,b,B,s,S} prog.exe
+```
+l : 16-bit little endian  
+L : 32-bit little endian  
+b : 16-bit big endian  
+B : 32-bit big endian  
+s : 7-bit byte char (ASCII, default)  
+S : 8-bit byte char  
+
 ### Other tools  
 
 [evil-winrm](https://github.com/Hackplayers/evil-winrm)  
