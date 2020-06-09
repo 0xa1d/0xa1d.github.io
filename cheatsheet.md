@@ -807,11 +807,19 @@ awk '{print $1}'
 
 -u : remove duplicates  
 
-- ssh tunneling  
+- ssh port forwarding (tunneling)
 
 Forward port 1234 of remote machine to port 5678 of local machine :  
 ```
 ssh -L 1234:127.0.0.1:5678 user@remote
+```
+
+- plink (port forwarding)
+
+Useful for port forwarding on Windows, downloadable [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).  
+Forward port 1234 of local machine to port 5678 of remote machine :
+```
+plink.exe -l $USER -pw $PASS -R 1234:127.0.0.1:5678 10.10.10.10
 ```
 
 - find  
