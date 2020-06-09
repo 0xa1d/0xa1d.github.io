@@ -491,11 +491,11 @@ Tools can help to find the way to privesc, but they shouldn't substitute manual 
 
 Powershell :  
 [Sherlock](https://github.com/rasta-mouse/Sherlock)  
-[SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
 [JAWS](https://github.com/411Hall/JAWS)  
 [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/tree/dev)  
 with [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)  
 and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
+[SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
 
 Executables :  
 [winPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)  
@@ -623,7 +623,7 @@ dir /A:H
 dir /S
 ```
 
-More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md) and [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
+More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md), [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
 
 ### Common exploits
 
