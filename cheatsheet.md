@@ -489,13 +489,21 @@ Tools can help to find the way to privesc, but they shouldn't substitute manual 
 
 - Windows  
 
-[winPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)  
-[BloodHound](https://github.com/BloodHoundAD/BloodHound)  
-with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)  
+Powershell :  
+[Sherlock](https://github.com/rasta-mouse/Sherlock)  
+[SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
+[JAWS](https://github.com/411Hall/JAWS)  
 [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/tree/dev)  
 with [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)  
 and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
-[SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
+
+Executables :  
+[winPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)  
+[BloodHound](https://github.com/BloodHoundAD/BloodHound)  
+with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)  
+[Seatbelt](https://github.com/GhostPack/Seatbelt)  
+
+Others :  
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
 
 ### Manual enum
@@ -569,16 +577,29 @@ arp -a
 
 # show listening ports
 netstat -ano
-
 ```
 
-Processes :  
+Processes, FW, AV :  
 ```
 # process list
 tasklist /v
 
 # scheduled tasks
 schtasks /query /fo LIST /v
+
+# show running services
+sc queryex type= service
+
+# show infos about service
+sc  query service
+# example with windows defender
+sc query windefend
+
+# show firewall infos
+netsh advfirewall firewall dump
+# or
+netsh firewall show state
+netsh firewall show config
 ```
 
 Search for passwords :  
@@ -588,8 +609,6 @@ cd C:\ & findstr /si password *.txt *.ini *.txt *.config *.xml
 
 # in registry
 REG QUERY HKLM /F "password" /t REG_SZ /S /K
-
-
 ```
 
 Others :  
@@ -604,7 +623,7 @@ dir /A:H
 dir /S
 ```
 
-More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md) and [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html)
+More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md) and [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
 
 ### Common exploits
 
