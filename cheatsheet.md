@@ -507,8 +507,7 @@ with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)
 Others :  
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
 [Windows Kernel Exploits](https://github.com/SecWiki/windows-kernel-exploits)  
-with [MS10-015](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-015)  
-and [MS10-059](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-059)  
+with [MS10-059](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-059)  
 
 ### Manual enum
 
