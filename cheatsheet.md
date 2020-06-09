@@ -627,15 +627,24 @@ dir /A:H
 
 # recursive dir
 dir /S
+
+# search
+where /R c:\windows prog.exe
 ```
 
 More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md), [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
 
-### Common exploits
+### Common & quick privesc
 
-- [Juicy Potato](http://ohpe.it/juicy-potato/)  
+- [Token Impersonation](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md#eop---impersonation-privileges)  
+
+with [Juicy Potato](http://ohpe.it/juicy-potato/)  
 
 Look for `SeImpersonatePrivilege` to `Enabled` with `whoami /priv`  
+
+- [WSL Privesc](https://twitter.com/Warlockobama/status/1067890915753132032)  
+
+Look for `bash.exe` and `wsl.exe` with `where /R c:\windows bash.exe` and `where /R c:\windows wsl.exe`.  
 
 ## Get shells
 
