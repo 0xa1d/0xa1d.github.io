@@ -611,7 +611,10 @@ Search for passwords :
 cd C:\ & findstr /si password *.txt *.ini *.txt *.config *.xml
 
 # in registry
-REG QUERY HKLM /F "password" /t REG_SZ /S /K
+reg query HKLM /F "password" /t REG_SZ /S /K
+
+# query specific
+reg query "HKLM\SOFTWARE\Microsoft\...."
 ```
 
 Others :  
