@@ -861,6 +861,12 @@ B : 32-bit big endian
 s : 7-bit byte char (ASCII, default)  
 S : 8-bit byte char  
 
+- winexe  
+
+```
+winexe -U $USER%$PASS //$IP "cmd.exe"
+```
+
 ### Other tools  
 
 [evil-winrm](https://github.com/Hackplayers/evil-winrm)  
