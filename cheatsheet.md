@@ -522,20 +522,78 @@ find /usr/bin/ -perm -4000
 
 - Windows  
 
+System :  
 ```
+# show system informations (os, version, architecture, etc.)
 systeminfo
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
 
+# show patches, hotfixes, etc.
+wmic qfe
+
+# show hostname
 hostname
 
+# show disks
+wmic logicaldisk get caption,description
+```
+
+Users & groups :  
+```
 # privileges and groups of current user
 whoami /all
 
 # list users
-net users
+net user
 
 # details about user
 net user alice
 
+# show local groups
+net localgroup
+
+# details about admin local group
+net localgroup administrators
+```
+
+Network :  
+```
+# ip address, mask, dns, gateway, interfaces, etc.
+ipconfig /all
+
+# show routes
+route print
+
+# show arp table
+arp -a
+
+# show listening ports
+netstat -ano
+
+```
+
+Processes :  
+```
+# process list
+tasklist /v
+
+# scheduled tasks
+schtasks /query /fo LIST /v
+```
+
+Search for passwords :  
+```
+# in files
+cd C:\ & findstr /si password *.txt *.ini *.txt *.config *.xml
+
+# in registry
+REG QUERY HKLM /F "password" /t REG_SZ /S /K
+
+
+```
+
+Others :  
+```
 # rights of file or directory
 icacls file.txt
 
@@ -544,19 +602,9 @@ dir /A:H
 
 # recursive dir
 dir /S
-
-# search for password in files
-cd C:\ & findstr /SI /M "password" *.xml *.ini *.txt
-
-# search for password in registry
-REG QUERY HKLM /F "password" /t REG_SZ /S /K
-
-# process list
-tasklist /v
-
-# scheduled tasks
-schtasks /query /fo LIST /v
 ```
+
+More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md) and [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html)
 
 ### Common exploits
 
