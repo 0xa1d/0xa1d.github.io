@@ -645,11 +645,17 @@ dir /R
 more < file.txt:stream:$DATA
 # ADS powershell
 Get-Item -path c:\path\file.txt -stream *
+
+# open powershell with policy execution bypass
+powershell -ep bypass
+
+# load .ps1
+. .\file.ps1
 ```
 
 More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md), [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
 
-### Common & quick privesc
+### Common Windows privesc checklist
 
 - [Token Impersonation](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md#eop---impersonation-privileges)  
 
@@ -661,12 +667,25 @@ Look for `SeImpersonatePrivilege` to `Enabled` with `whoami /priv`
 
 Look for `bash.exe` and `wsl.exe` with `where /R c:\windows bash.exe` and `where /R c:\windows wsl.exe`.  
 
-- RunAs
+- RunAs  
 
 Look for stored credentials with `cmdkey /list`. Example with administrator :  
 ```
 runas /user:DOMAIN\Administrator /savecred "cmd.exe /c whoami"
 ```
+
+- Autorun
+
+With sysinternal tools :
+[Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)  
+[AccessChk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk)  
+
+Run `Autoruns64.exe` to look for autorun specs in HKLM and `accesschk64.exe -wvu $PROG` to check if `FILE_ALL_ACCESS` for `Everyone` is set.
+
+Or with PowerUp :
+[PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1)  
+
+Run `Get-ModifiableRegistryAutoRun`.  
 
 ## Get shells
 
