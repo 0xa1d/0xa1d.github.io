@@ -676,13 +676,13 @@ runas /user:DOMAIN\Administrator /savecred "cmd.exe /c whoami"
 
 - Autorun
 
-With sysinternal tools :
+With sysinternal tools :  
 [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)  
 [AccessChk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk)  
 
-Run `Autoruns64.exe` to look for autorun specs in HKLM and `accesschk64.exe -wvu $PROG` to check if `FILE_ALL_ACCESS` for `Everyone` is set.
+Run `Autoruns64.exe` to look for autorun specs in HKLM and `accesschk64.exe -wvu $PROG` to check if `FILE_ALL_ACCESS` for `Everyone` is set.  
 
-Or with PowerUp :
+Or with PowerUp :  
 [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1)  
 
 Run `Get-ModifiableRegistryAutoRun`.  
