@@ -38,6 +38,15 @@ nmap -p- --max-retries 0 --min-rate 5000 $HOST -oN nmapfull
 
 When fast scan detects more ports, I run the first scan again on the newly found ports (for example `-p 45678,45679`)  
 
+### 21 - FTP
+
+- Anonymous login  
+
+```
+ftp $HOST
+```
+Try `anonymous`:`anonymous` as credentials.
+
 ### 53 - DNS
 
 - Zone transfer  
@@ -651,6 +660,10 @@ Look for `SeImpersonatePrivilege` to `Enabled` with `whoami /priv`
 - [WSL Privesc](https://twitter.com/Warlockobama/status/1067890915753132032)  
 
 Look for `bash.exe` and `wsl.exe` with `where /R c:\windows bash.exe` and `where /R c:\windows wsl.exe`.  
+
+- RunAs
+
+cmdkey /list
 
 ## Get shells
 
