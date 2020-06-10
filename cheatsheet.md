@@ -630,6 +630,12 @@ dir /S
 
 # search
 where /R c:\windows prog.exe
+
+# ADS (alternate data stream)
+dir /R
+more < file.txt:stream:$DATA
+# ADS powershell
+Get-Item -path c:\path\file.txt -stream *
 ```
 
 More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md), [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
