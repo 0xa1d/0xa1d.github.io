@@ -657,43 +657,34 @@ More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Meth
 
 ### Common Windows privesc checklist
 
-#### [Token Impersonation](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md#eop---impersonation-privileges)  
+- [Token Impersonation](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md#eop---impersonation-privileges)  
 
 with [Juicy Potato](http://ohpe.it/juicy-potato/)  
 
 Look for `SeImpersonatePrivilege` to `Enabled` with `whoami /priv`  
 
-#### [WSL Privesc](https://twitter.com/Warlockobama/status/1067890915753132032)  
+- [WSL Privesc](https://twitter.com/Warlockobama/status/1067890915753132032)  
 
 Look for `bash.exe` and `wsl.exe` with `where /R c:\windows bash.exe` and `where /R c:\windows wsl.exe`.  
 
-#### RunAs  
+- RunAs  
 
 Look for stored credentials with `cmdkey /list`. Example with administrator :  
 ```
 runas /user:DOMAIN\Administrator /savecred "cmd.exe /c whoami"
 ```
 
-#### Autorun
-
-- Check  
+- Autorun  
 
 Check with sysinternal tools [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns) and [AccessChk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk), run `Autoruns64.exe` to look for autorun specs in HKLM and `accesschk64.exe -wvu $PROG` to check if `FILE_ALL_ACCESS` for `Everyone` is set.
-
 Or with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), run `Get-ModifiableRegistryAutoRun`.  
-
-- Exploit  
 
 Replace the program with a reverse shell (msfvenom will be handy). Program will be run next time an administrator logs in, giving an admin shell on listener.  
 
-#### AlwaysInstallElevated  
-
-- Check  
+- AlwaysInstallElevated  
 
 Check in registry with `reg query HKLM\Software\Policies\Microsoft\Windows\Installer` and `reg query HKCU\Software\Policies\Microsoft\Windows\Installer` if `AlwaysInstallElevated` is set to 1.
-Or with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1) with `Get-RegAlwaysInstallElevated`.
-
-- Exploit  
+Or with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1) with `Get-RegAlwaysInstallElevated`.  
 
 todo
 
