@@ -686,7 +686,7 @@ Replace the program with a reverse shell (msfvenom will be handy). Program will 
 Check in registry with `reg query HKLM\Software\Policies\Microsoft\Windows\Installer` and `reg query HKCU\Software\Policies\Microsoft\Windows\Installer` if `AlwaysInstallElevated` is set to 1.  
 Or with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1) with `Get-RegAlwaysInstallElevated`.  
 
-todo
+Create msi reverse shell with msfvenom and execute with `msiexec /quiet /qn /i c:\path\rev.msi`.  
 
 ## Get shells
 
