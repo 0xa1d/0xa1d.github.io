@@ -687,6 +687,8 @@ Or with PowerUp :
 
 Run `Get-ModifiableRegistryAutoRun`.  
 
+If something is found, replace the program with a reverse shell (msfvenom). Program will be run next time an administrator logs in.  
+
 ## Get shells
 
 Didn't know how to name and sort this category.  
