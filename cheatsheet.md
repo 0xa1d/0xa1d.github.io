@@ -687,6 +687,13 @@ Check in registry with `reg query HKLM\Software\Policies\Microsoft\Windows\Insta
 Or with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1) with `Get-RegAlwaysInstallElevated`.  
 
 Create msi reverse shell with msfvenom and execute with `msiexec /quiet /qn /i c:\path\rev.msi`.  
+Or use `Write-UserAddMSI` of PowerUp to create local admin.  
+
+- regsvc  
+
+Check with `Get-Acl -Path HKLM:\System\CurrentControlSet\services\regsvc |fl` if current user has `FullControl` on registry key.  
+
+todo  
 
 ## Get shells
 
