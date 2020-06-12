@@ -669,7 +669,9 @@ Look for `bash.exe` and `wsl.exe` with `where /R c:\windows bash.exe` and `where
 
 - RunAs  
 
-Look for stored credentials with `cmdkey /list`. Example with administrator :  
+Look for stored credentials with `cmdkey /list`.  
+
+Reuse credentials found with, for example, administrator :  
 ```
 runas /user:DOMAIN\Administrator /savecred "cmd.exe /c whoami"
 ```
