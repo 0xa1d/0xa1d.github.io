@@ -718,7 +718,8 @@ If so, place reverse shell executable in directory, log off and wait for an admi
 
 - DLL hijacking  
 
-todo
+todo : with procmon from systinternals
+todo : with powerup with Find-ProcessDLLHijack
 
 - Alternative to executables  
 
