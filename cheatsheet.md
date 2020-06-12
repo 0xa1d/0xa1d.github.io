@@ -710,6 +710,12 @@ net stop $SERVICE
 net start $SERVICE
 ```
 
+- Startup applications  
+
+Check with `icacls.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"` if you have access, for example (F) for Full Access, to the directory.  
+
+If so, place reverse shell executable in directory and wait for an admin to log in, giving an admin shell on listener.  
+
 - Alternative to executables  
 
 Instead of reverse shell executables, you can make batch file which calls nc.exe hosted on kali with smbserver (more details below).  
