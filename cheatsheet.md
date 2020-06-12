@@ -657,6 +657,8 @@ More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Meth
 
 ### Common Windows privesc checklist
 
+Disclaimer : a lot of these checks can be made automatically with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1) and `Invoke-AllChecks`, some of them even have embedded exploit function. I don't give much details about the theory behind each exploit but I strongly recommend to understand them before any exploitation.  
+
 - [Token Impersonation](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md#eop---impersonation-privileges)  
 
 with [Juicy Potato](http://ohpe.it/juicy-potato/)  
