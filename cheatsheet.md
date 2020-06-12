@@ -714,7 +714,11 @@ net start $SERVICE
 
 Check with `icacls.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"` if you have access, for example (F) for Full Access, to the directory.  
 
-If so, place reverse shell executable in directory and wait for an admin to log in, giving an admin shell on listener.  
+If so, place reverse shell executable in directory, log off and wait for an admin to log in, giving an admin shell on listener.  
+
+- DLL hijacking  
+
+todo
 
 - Alternative to executables  
 
