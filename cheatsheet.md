@@ -487,16 +487,38 @@ Example :
 
 Tools can help to find the way to privesc, but they shouldn't substitute manual enumeration. Make sure to always verify their result manually.  
 
-### Tools
+### Linux
 
-- Linux  
+#### Tools  
 
 [pspy](https://github.com/DominicBreuker/pspy)  
 [LinEnum](https://github.com/rebootuser/LinEnum)  
 [LinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)  
 [SUID3NUM](https://github.com/Anon-Exploiter/SUID3NUM)  
 
-- Windows  
+#### Manual  
+
+```
+sudo -l 
+
+ls -al /
+
+uname -a
+
+cat /etc/passwd
+
+ls -alhR /home
+
+ls -al /var/www
+
+ps -ef
+
+find /usr/bin/ -perm -4000
+```
+
+### Windows  
+
+#### Tools  
 
 Powershell :  
 [JAWS](https://github.com/411Hall/JAWS)  
@@ -518,29 +540,7 @@ Others :
 [Windows Kernel Exploits](https://github.com/SecWiki/windows-kernel-exploits)  
 with [MS10-059](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-059)  
 
-### Manual enum
-
-- Linux  
-
-```
-sudo -l 
-
-ls -al /
-
-uname -a
-
-cat /etc/passwd
-
-ls -alhR /home
-
-ls -al /var/www
-
-ps -ef
-
-find /usr/bin/ -perm -4000
-```
-
-- Windows  
+#### Manual  
 
 System :  
 ```
@@ -655,7 +655,7 @@ powershell -ep bypass
 
 More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md), [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
 
-### Common Windows privesc checklist
+#### Common Windows privesc vectors
 
 Disclaimer : a lot of these checks can be made automatically with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1) and `Invoke-AllChecks`, some of them even have embedded exploit function. I don't give much details about the theory behind each exploit but I strongly recommend to understand them before any exploitation.  
 
