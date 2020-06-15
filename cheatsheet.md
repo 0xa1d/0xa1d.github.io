@@ -716,7 +716,7 @@ Check with sysinternals tools [Procmon](https://docs.microsoft.com/en-us/sysinte
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Find-DLLHijack` and `Find-PathHijack` and abuse with `Write-HijackDll`.  
 
-- Insecure service permission (binpath)
+- Insecure service permission (binpath)  
 
 Similar to a previous one, check with `accesschk64.exe -uwcv Everyone *` if you have RW permission on some service. You can query a specific one to get more details with `accesschk64.exe -uwcv $SERVICE`. You can then reconfigure service and supply malicious executable as parameter :
 ```
@@ -726,6 +726,12 @@ net start $SERVICE
 ```
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-ServicePermission` and abuse with `Invoke-ServiceAbuse`.  
+
+- Unquoted service paths  
+
+Look for (wait for it...) unquoted service paths in registry `HKLM\SYSTEM\CurrentControlSet\services`. If you find one, create a malicious executable with msfvenom and place it in adequate location. For example if some service has unoquoted path, like `c:\program files\vulnerable path\executable.exe`, you can place and rename the executable in `c:\program.exe` or `c:\program files\vulnerable.exe`.  
+
+With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-UnquotedService` and abuse with `Write-ServiceBinary`.  
 
 - Alternative to executables  
 
