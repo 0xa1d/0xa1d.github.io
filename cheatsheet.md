@@ -718,7 +718,7 @@ If so, place reverse shell executable in directory, log off and wait for an admi
 
 - DLL hijacking  
 
-todo : with procmon from systinternals
+Check with sysinternals tools [Procmon](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon) by applying the filters `Result` is `NAME NOT FOUND` and `Path` ends with `.dll`. If a location found is writable, it can be abused by replacing the missing dll with a crafted one (with msfvenom) and restarting the service to get a reverse shell or add local admin.  
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Find-DLLHijack` and `Find-PathHijack` and abuse with `Write-HijackDll`.  
 
