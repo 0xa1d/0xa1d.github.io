@@ -428,7 +428,7 @@ Example (Kerberoast) :
 ```
 john $HASH $WORDLIST
 ```
-It's often as easy as "give him the password and the wordlist and let him do its thing", it automatically finds the correct hash format and attempt to crack it.  
+It's often as easy as "give him the password and the wordlist and let him do its thing", it automatically finds the correct hash format and tries to crack it.  
 
 ## Payloads
 
