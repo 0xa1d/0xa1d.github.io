@@ -640,14 +640,19 @@ dir /S
 # search
 where /R c:\windows prog.exe
 
-# ADS (alternate data stream)
-dir /R
-more < file.txt:stream:$DATA
-# ADS powershell
+# Show ADS (alternate data stream)
+dir /r
+more < file.txt:$stream:$DATA
+# Show ADS Powershell
 Get-Item -path c:\path\file.txt -stream *
+# Get ADS Powershell
+Get-Content c:\path\file.txt -stream $stream
 
-# open powershell with policy execution bypass
+# open powershell prompt with execution policy bypass
 powershell -ep bypass
+
+# run powershell file with execution policy bypass
+powershell -ep bypass .\file.ps1
 
 # load .ps1
 . .\file.ps1
