@@ -742,7 +742,7 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 
 - Unquoted service paths  
 
-Look for (wait for it...) unquoted service paths in registry `HKLM\SYSTEM\CurrentControlSet\services`. If you find one, create a malicious executable with msfvenom and place it in adequate location. For example if some service has unoquoted path, like `c:\program files\vulnerable path\executable.exe`, you can place and rename the executable in `c:\program.exe` or `c:\program files\vulnerable.exe` and then restart the service.  
+Look for (wait for it...) unquoted service paths in registry `HKLM\SYSTEM\CurrentControlSet\services`. If you find one, create a malicious executable with msfvenom and place it in adequate location. For example if some service has unoquoted path, like `c:\program files\vulnerable path\executable.exe`, you can place and rename the executable in `c:\program.exe` or `c:\program files\vulnerable.exe` and then restart the service. Also works if directory of .exe is writable, you can overwrite it with the reverse shell.  
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-UnquotedService` and abuse with `Write-ServiceBinary`.  
 
