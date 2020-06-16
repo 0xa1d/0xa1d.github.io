@@ -929,9 +929,13 @@ Search for file in current directory :
 find . -name file.txt
 ```
 
-Exec command for each file found, example :  
+Exec command on files found :  
 ```
+# exec wc -c on each file found
 find . -name file.txt -exec wc -c {} \;
+
+# echo all .txt found and exec grep $pattern on each one
+find . -name *.txt -exec echo {} \; -exec grep $pattern {} \;
 ```
 
 - tcpdump
