@@ -542,7 +542,6 @@ with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)
 Others :  
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
 [Windows Kernel Exploits](https://github.com/SecWiki/windows-kernel-exploits)  
-with [MS10-059](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-059)  
 
 #### Manual  
 
@@ -749,6 +748,10 @@ With [PowerUp](https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerU
 - Alternative to executables  
 
 Instead of malicious executables crafted with msfvenom, you can make custom batch file which calls nc.exe hosted on kali with smbserver (more details below).  
+
+### CVEs
+
+[2019-1388](https://github.com/jas502n/CVE-2019-1388)  
 
 ## Get shells
 
@@ -982,6 +985,12 @@ S : 8-bit byte char
 
 ```
 winexe -U $USER%$PASS //$IP "cmd.exe"
+```
+
+- xfreerdp  
+
+```
+xfreerdp /u:$USER /v:$IP:$PORT
 ```
 
 ### Other tools  
