@@ -340,6 +340,17 @@ Not actively maintained but still useful :
 enum4linux $HOST
 ```
 
+- mount smb share  
+
+```
+# no auth
+mount -t cifs //$HOST/share /mnt/share
+
+# auth
+mount -t cifs -o 'username=$user,password=$password' //$HOST/share /mnt/share 
+```
+Example : `mount -t cifs -o 'username=alice,password=letmein' //10.10.10.10/Public /mnt/public`.  
+
 ### 389(636) & 3268(3269) - LDAP
 
 - ldapsearch  
@@ -534,6 +545,8 @@ uname -a
 cat /etc/passwd
 
 ls -alhR /home
+
+find . -ls -type f
 
 ls -al /var/www
 
