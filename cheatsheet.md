@@ -665,6 +665,8 @@ icacls file.txt
 
 # hidden dir / files
 dir /A:H
+# powershell
+gci -hidden
 
 # recursive dir
 dir /S
