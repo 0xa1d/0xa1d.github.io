@@ -178,14 +178,19 @@ Replace `X` with the number(s) returned by `LIST`.
 
 - rpcclient  
 
-Connect with null session :  
+Connect with null authentication :  
 ```
-rpcclient -U "" $HOST
+rpcclient -U '' $HOST
 ```
 
 Enum users and give RIDs :  
 ```
 rpcclient> enumdomusers
+```
+
+Enum account's descriptions :  
+```
+rpcclient> querydispinfo
 ```
 
 Enum privileges :  
@@ -245,6 +250,10 @@ Example :
 
 List shares :  
 ```
+# anonymous (no password)
+smbclient -L //$HOST
+
+# as user
 smbclient -L //$HOST -U $USER
 ```
 
@@ -264,10 +273,10 @@ smb: \> mget $DIR
 
 Enum smb share :  
 ```
-# no creds
+# anonymous
 smbmap -H $HOST
 
-# with creds
+# as user
 smbmap -H $HOST -d $DOMAIN -u $USER -p $PWD
 ```
 Example :  
@@ -275,7 +284,7 @@ Example :
 
 - crackmapexec  
 
-Null session :  
+Null authentication :  
 ```
 crackmapexec smb $HOST -u '' -p ''
 ```
@@ -311,9 +320,18 @@ crackmapexec smb $HOST -u $USER -H $HASH
 
 Password spraying :  
 ```
+# smb
 crackmapexec smb $HOST -u $USER_FILE -p $PWD_FILE
+
+# winrm
+crackmapexec winrm $HOST -u $USER_FILE -p $PWD_FILE
 ```
 With `$PWD_FILE` containing the list of passwords to test against the users listed in `$USER_FILE`.  
+
+Execute command :
+```
+crackmapexec winrm $HOST -u $USER -p $PASS -X "whoami /all"
+```
 
 - enum4linux
 
@@ -785,7 +803,14 @@ Files in current directory available at `http://$HOST/$FILE`
 
 This one is life-saviour, I use it on almost every Windows box
 ```
+# no authentication will be required
 impacket-smbserver share .
+
+# authentication will be required
+impacket-smbserver share . -user $USER -password $PASSWORD
+
+# smb2 support
+-smb2support
 ```
 Files in current directory available at `\\$HOST\share\$FILE`  
 
@@ -1012,6 +1037,41 @@ mssqlclient.py $DOMAIN/$USER:'$PASS'@$IP -windows-auth
 ```
 
 And then try to get a shell with `enable_xp_cmdshell` and `xp_cmdshell whoami`, or use [this exploit](https://medium.com/@markmotig/how-to-capture-mssql-credentials-with-xp-dirtree-smbserver-py-5c29d852f478). More [here](https://book.hacktricks.xyz/pentesting/pentesting-mssql-microsoft-sql-server).  
+
+- Linux timesaver  
+
+```
+# search through command history
+ctrl r
+
+# cycle through last arguments (french keyboard)
+alt shift ;
+
+# move cursor to end
+ctrl e
+
+# move cursor to start
+ctrl a
+
+# replacement for last command
+!!
+# useful if you forgot sudo on last command, type
+sudo !!
+
+# replacements for last argument
+!$
+
+# replacement for all last arguments
+!*
+
+# go to last directory
+cd -
+
+# cp while appending something to a filename (for example for backups)
+cp file{,.old}
+```
+
+More [here](https://media.defcon.org/DEF%20CON%2026/DEF%20CON%2026%20presentations/DEFCON-26-Egypt-One-Liners-to-Rule-Them-All-Updated.pdf) and [here](https://opensource.com/article/18/5/bash-tricks).  
 
 ### Other tools  
 
