@@ -277,10 +277,13 @@ Enum smb share :
 smbmap -H $HOST
 
 # as user
-smbmap -H $HOST -d $DOMAIN -u $USER -p $PWD
+smbmap -H $HOST [-d $DOMAIN] -u $USER -p $PWD
+
+# recursively
+smbmap -H $HOST [-d $DOMAIN] -u $USER -p $PWD -R
 ```
 Example :  
-`smbmap -H 10.10.10.10 -d domain.local -u bob -p 'Password123!'`
+`smbmap -H 10.10.10.10 -u bob -p 'Password123!' -R`
 
 - crackmapexec  
 
@@ -455,6 +458,11 @@ hashcat -m $HASH-TYPE -a $MODE $HASH $WORDLIST
 ```
 Example (Kerberoast) :  
 `hashcat -m 13100 -a 0 spn.hash /usr/share/wordlists/rockyou.txt`  
+
+Hashcat is also useful for generating custom wordlists with a set of passwords as input, like this :  
+```
+hashcat --force --stdout -r /usr/share/hashcat/rules/best64.rule $PASS_FILE_IN > $PASS_FILE_OUT
+```
 
 - John  
 
@@ -707,6 +715,9 @@ powershell -ep bypass .\file.ps1
 # start or stop service
 sc start $service
 sc stop $service
+
+# query with sqlcmd
+sqlcmd -Q "$query"
 ```
 
 More [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md), [here](https://www.fuzzysecurity.com/tutorials/16.html) and [here](https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html).
