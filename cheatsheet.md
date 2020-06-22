@@ -573,6 +573,7 @@ with [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Prives
 and [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)  
 [Sherlock](https://github.com/rasta-mouse/Sherlock)  
 [JAWS](https://github.com/411Hall/JAWS)  
+[PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)  
 [SessionGopher](https://github.com/Arvanaghi/SessionGopher)  
 
 Executables :  
@@ -585,6 +586,7 @@ with [SharpHound](https://github.com/BloodHoundAD/SharpHound3)
 Others :  
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)  
 [Windows Kernel Exploits](https://github.com/SecWiki/windows-kernel-exploits)  
+[Responder](https://github.com/lgandx/Responder)  
 
 #### Manual  
 
