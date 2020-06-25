@@ -17,4 +17,7 @@ The categories are subject to change, I'm still trying to figure out how to bett
 
 ## Progress
 I have done 42 boxes including 9 actives as of June, 04.  
-There are 16 boxes left on my to-do list of retired machines. I'm also planning to get Pro Hacker rank before taking the course (Hacker atm).
+There are 16 boxes left on my to-do list of retired machines. I'm also planning to get Pro Hacker rank before taking the course (Hacker atm).  
+
+
+*Last updated : 25/06*
