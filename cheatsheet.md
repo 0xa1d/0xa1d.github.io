@@ -80,6 +80,12 @@ More useful options :
 `-t 20` number of threads  
 `-s 200` to restrict by HTTP status (default is 200,204,301,302,307,401,403)  
 
+Also useful for bruteforcing vhosts (not to be confused with dns bruteforcing) :  
+```
+gobuster vhost -u $TARGET -w /opt/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+```
+Example : `gobuster vhost -u domain.local -w /opt/SecLists/Discovery/DNS/subdomains-top1million-5000.txt`.  
+
 - wfuzz  
 
 ```
