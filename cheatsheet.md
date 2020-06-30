@@ -1129,6 +1129,7 @@ More [here](https://media.defcon.org/DEF%20CON%2026/DEF%20CON%2026%20presentatio
 [SecLists](https://github.com/danielmiessler/SecLists)  
 [Nishang](https://github.com/samratashok/nishang)  
 [Ghidra](https://ghidra-sre.org/)  
+[Chisel](https://github.com/jpillora/chisel)  
 
 - Steganography  
 
