@@ -345,6 +345,8 @@ Execute command :
 crackmapexec winrm $HOST -u $USER -p $PASS -X "whoami /all"
 ```
 
+More [here](https://mpgn.gitbook.io/crackmapexec/).  
+
 - enum4linux
 
 Not actively maintained but still useful :
