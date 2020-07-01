@@ -143,6 +143,9 @@ Example :
 `kerbrute userenum --dc 10.10.10.10 -d domain.local /opt/SecLists/Usernames/xato-net-10-million-usernames-dup.txt`  
 
 **Bruteforce user :**  
+
+Kerberos pre-auth bruteforce is much faster than SMB/RPC and also probably stealthier, it doesn't trigger a "4625 Account Failed to Logon" event but "4471 Kerberos pre-authentication failure" and "4768 Kerberos TGT requested" instead. Oh and it doesn't count towards lockout. More [here](https://troopers.de/downloads/troopers19/TROOPERS19_AD_Fun_With_LDAP.pdf)  
+
 ```
 kerbrute bruteuser --dc $HOST -d $DOMAIN $WORDLIST $USER
 ```
