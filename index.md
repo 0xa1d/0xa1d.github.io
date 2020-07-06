@@ -20,4 +20,4 @@ I have done 43 boxes including 10 actives as of July, 01.
 There are 16 boxes left on my to-do list of retired machines. I'm also planning to get Pro Hacker rank before taking the course (Hacker atm).  
 
 
-*Last updated : 01/07/20*
+*Last updated : 06/07/20*
