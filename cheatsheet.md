@@ -398,6 +398,8 @@ And for each user, its sAMAccountName :
 ldapsearch -h $HOST -x -b "DC=$DOMAIN" '(objectClass=user)' sAMAccountName
 ```
 
+Other interesting fields : `logonCount`, `description`.  
+
 - ldapdomaindump  
 
 Tool for dumping all LDAP info with valid creds :
