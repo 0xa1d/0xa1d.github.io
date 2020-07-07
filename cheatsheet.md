@@ -409,6 +409,8 @@ ldapdomaindump -u $HOST\\$USER -p $PWD $DOMAIN
 Example :  
 `ldapdomaindump -u 10.10.10.10\\alice -p 'Password123!' domain.local`  
 
+Another great tool : [windapsearch](https://github.com/ropnop/go-windapsearch).  
+
 ### OS fingerprinting
 
 If you have any doubt about which OS is running on a box and nmap doesn't help, there is a way to know with ping and checking the TTL :  
