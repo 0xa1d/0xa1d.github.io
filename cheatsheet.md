@@ -1115,7 +1115,7 @@ ctrl a
 # useful if you forgot sudo on last command, type
 sudo !!
 
-# replacements for last argument
+# replacement for last argument
 !$
 
 # replacement for all last arguments
