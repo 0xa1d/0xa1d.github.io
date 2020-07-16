@@ -16,8 +16,8 @@ The categories are subject to change, I'm still trying to figure out how to bett
 - [Misc](https://0xa1d.github.io/cheatsheet#misc)
 
 ## Progress
-I have done 43 boxes including 10 actives as of July, 01.  
+I have done 44 boxes including 11 actives as of July, 16.  
 There are 16 boxes left on my to-do list of retired machines. I'm also planning to get Pro Hacker rank before taking the course (Hacker atm).  
 
 
-*Last updated : 07/07/20*
+*Last updated : 16/07/20*
