@@ -15,7 +15,7 @@
 
 ### Ports & services
 
-I always run the following 2 scans to begin with. Heard about UDP scans but I haven't needed it yet.  
+I always run the following 2 scans to begin with.  
 
 - Basic scan  
 
